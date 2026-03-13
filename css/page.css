@@ -1,0 +1,423 @@
+/* ==================== Page Styles ==================== */
+
+.page {
+    min-height: 100vh;
+    padding: 8rem 0 4rem;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.page-header h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.page-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section-block {
+    margin-bottom: 3.5rem;
+}
+
+.section-block h2 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.section-block p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+/* Info List */
+.info-list {
+    list-style: none;
+}
+
+.info-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+}
+
+.info-list li:last-child {
+    border-bottom: none;
+}
+
+.info-list strong {
+    color: var(--text-primary);
+    margin-right: 0.5rem;
+}
+
+/* Interests Grid */
+.interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.interest-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s;
+}
+
+.interest-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+}
+
+.interest-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.interest-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+}
+
+.interest-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* Todo List */
+.todo-list {
+    list-style: none;
+}
+
+.todo-list li {
+    padding: 0.75rem 0;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.todo-list li::before {
+    content: "→";
+    color: var(--accent);
+}
+
+/* Quote */
+.quote {
+    background: var(--bg-secondary);
+    border-left: 3px solid var(--accent);
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.quote p {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 0;
+    font-style: italic;
+}
+
+/* Belief List */
+.belief-list {
+    list-style: none;
+    margin-top: 1.5rem;
+}
+
+.belief-list li {
+    padding: 0.75rem 0;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Contact Links */
+.contact-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-primary);
+    transition: all 0.2s;
+}
+
+.contact-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* Writing List */
+.writing-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.writing-item {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.3s;
+}
+
+.writing-item:hover {
+    border-color: var(--accent);
+    transform: translateX(8px);
+}
+
+.writing-item h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.writing-item h3 a {
+    transition: color 0.2s;
+}
+
+.writing-item h3 a:hover {
+    color: var(--accent);
+}
+
+.writing-meta {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    font-family: var(--font-mono);
+}
+
+.writing-item p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.writing-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.writing-tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    background: var(--bg-tertiary);
+    border-radius: 100px;
+    color: var(--text-muted);
+}
+
+/* Project Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.project-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s;
+}
+
+.project-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+}
+
+.project-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.project-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.project-status {
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-family: var(--font-mono);
+}
+
+/* Book List */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.book-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.book-cover {
+    width: 60px;
+    height: 90px;
+    background: var(--bg-tertiary);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.book-info h3 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.book-author {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.book-summary {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Notes */
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.note-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    transition: all 0.2s;
+}
+
+.note-card:hover {
+    border-color: var(--accent);
+}
+
+.note-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.note-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+}
+
+.note-count {
+    font-size: 0.75rem;
+    color: var(--accent);
+    font-family: var(--font-mono);
+}
+
+/* Fun Page */
+.fun-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.fun-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.fun-card:hover {
+    transform: scale(1.02);
+    border-color: var(--accent);
+}
+
+.fun-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.fun-card h3 {
+    margin-bottom: 0.5rem;
+}
+
+.fun-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .page {
+        padding: 6rem 0 3rem;
+    }
+    
+    .page-header {
+        margin-bottom: 2rem;
+    }
+    
+    .section-block {
+        margin-bottom: 2.5rem;
+    }
+    
+    .interests-grid,
+    .projects-grid,
+    .books-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-links {
+        flex-direction: column;
+    }
+}
