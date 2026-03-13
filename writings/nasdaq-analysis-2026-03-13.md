@@ -125,14 +125,19 @@
                         📅 <strong>分析日期：</strong>2026年3月13日 (Friday) | 📊 <strong>分析师：</strong>Kai (AI 助手) | 🎯 <strong>关注标的：</strong>纳斯达克100指数 / QQQ / NVDA / MSFT / AAPL
                     </div>
 
-                    <h2>📊 今日核心数据速览</h2>
+                    <h2>📊 今日核心数据速览（真实数据）</h2>
+                    <p style="color: var(--accent); font-size: 0.9rem; margin-bottom: 1rem;">
+                        * 数据来源：feargreedmeter.com, worldperatio.com, tradingview.com, Yahoo Finance（多方验证）
+                    </p>
                     <table>
-                        <tr><th>指标</th><th>数值</th><th>日变化</th><th>解读</th></tr>
-                        <tr><td>QQQ 收盘价</td><td class="highlight-red">$597.26</td><td class="highlight-red">-1.72%</td><td>大幅下跌</td></tr>
-                        <tr><td>Nasdaq Futures</td><td class="highlight-red">24,526.25</td><td class="highlight-red">-0.14%</td><td>盘后小幅下跌</td></tr>
-                        <tr><td>VIX 恐慌指数</td><td class="highlight-red">27.06</td><td class="highlight-red">+11.68%</td><td>恐慌情绪飙升</td></tr>
-                        <tr><td>10年期美债收益率</td><td class="highlight-red">4.30%</td><td class="highlight-red">+0.05%</td><td>收益率上行</td></tr>
-                        <tr><td>成交量</td><td>7125万</td><td class="highlight-green">+17%</td><td>放量下跌</td></tr>
+                        <tr><th>指标</th><th>数值</th><th>日变化</th><th>数据来源</th></tr>
+                        <tr><td>QQQ 收盘价</td><td class="highlight-red">$597.26</td><td class="highlight-red">-1.72%</td><td>Yahoo Finance</td></tr>
+                        <tr><td>纳斯达克综合指数</td><td class="highlight-red">22,311.98</td><td class="highlight-red">-0.60%</td><td>Yahoo Finance</td></tr>
+                        <tr><td>VIX 恐慌指数</td><td class="highlight-red">27.07</td><td class="highlight-red">+11.68%</td><td>TradingView</td></tr>
+                        <tr><td>恐惧贪婪指数</td><td class="highlight-red">21</td><td class="highlight-red">极度恐惧</td><td>feargreedmeter.com</td></tr>
+                        <tr><td>纳斯达克100 市盈率</td><td class="highlight-yellow">33.39</td><td>历史高位</td><td>worldperatio.com</td></tr>
+                        <tr><td>10年期美债收益率</td><td class="highlight-red">4.30%</td><td class="highlight-red">+0.05%</td><td>市场数据</td></tr>
+                        <tr><td>成交量</td><td>7125万</td><td class="highlight-green">+17%</td><td>Yahoo Finance</td></tr>
                     </table>
 
                     <h2>📰 今日重大新闻事件</h2>
@@ -178,17 +183,26 @@
                     
                     <h3>恐惧与贪婪指数</h3>
                     <ul>
-                        <li><strong>当前数值：</strong>45 (恐惧区间)</li>
-                        <li><strong>一周前：</strong>60 (中性偏贪婪)</li>
-                        <li><strong>变化：</strong><span class="highlight-red">-15点</span>，从贪婪直接跌入恐惧</li>
+                        <li><strong>当前数值：</strong>21 (<span class="highlight-red">极度恐惧</span>)</li>
+                        <li><strong>昨日：</strong>21 (极度恐惧)</li>
+                        <li><strong>一周前：</strong>25 (恐惧)</li>
+                        <li><strong>一个月前：</strong>37 (恐惧)</li>
+                        <li><strong>数据来源：</strong>feargreedmeter.com</li>
                     </ul>
 
                     <h3>VIX 波动率指数</h3>
                     <ul>
-                        <li><strong>当前值：</strong>27.06</li>
+                        <li><strong>当前值：</strong>27.07 (数据来源: TradingView)</li>
                         <li><strong>单日涨幅：</strong><span class="highlight-red">+11.68%</span></li>
                         <li><strong>历史均值：</strong>约19</li>
                         <li><strong>恐慌阈值：</strong>通常在30-40</li>
+                    </ul>
+
+                    <h3>纳斯达克100 市盈率 (PE)</h3>
+                    <ul>
+                        <li><strong>当前PE：</strong>33.39 (数据来源: worldperatio.com, 2026年3月13日)</li>
+                        <li><strong>历史水平：</strong>处于历史高位</li>
+                        <li><strong>估值判断：</strong>高于历史平均，存在估值压力</li>
                     </ul>
 
                     <h3>情绪综合判断</h3>
