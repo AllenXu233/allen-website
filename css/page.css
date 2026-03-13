@@ -258,11 +258,18 @@
     border-radius: 12px;
     padding: 1.5rem;
     transition: all 0.3s;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
 }
 
 .project-card:hover {
     border-color: var(--accent);
     transform: translateY(-4px);
+}
+
+.project-card * {
+    pointer-events: none;
 }
 
 .project-icon {
@@ -301,6 +308,17 @@
     padding: 1.5rem;
     display: flex;
     gap: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.book-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.book-card * {
+    pointer-events: none;
 }
 
 .book-cover {
@@ -345,10 +363,17 @@
     border-radius: 8px;
     padding: 1.25rem;
     transition: all 0.2s;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
 }
 
 .note-card:hover {
     border-color: var(--accent);
+}
+
+.note-card * {
+    pointer-events: none;
 }
 
 .note-card h3 {
@@ -382,11 +407,18 @@
     padding: 2rem;
     text-align: center;
     transition: all 0.3s;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
 }
 
 .fun-card:hover {
     transform: scale(1.02);
     border-color: var(--accent);
+}
+
+.fun-card * {
+    pointer-events: none;
 }
 
 .fun-icon {
