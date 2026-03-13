@@ -191,11 +191,17 @@
     border-radius: 12px;
     padding: 2rem;
     transition: all 0.3s;
+    display: block;
+    text-decoration: none;
 }
 
 .writing-item:hover {
     border-color: var(--accent);
     transform: translateX(8px);
+}
+
+.writing-item * {
+    pointer-events: none;
 }
 
 .writing-item h3 {
