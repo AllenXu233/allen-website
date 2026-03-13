@@ -10,8 +10,8 @@
     --accent-dim: #0891b2;
     --border: #27272a;
     --font-serif: 'Noto Serif SC', serif;
-    --font-sans: 'Inter', sans-serif;
-    --font-mono: 'Space Mono', monospace;
+    --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
+    --font-mono: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
 }
 
 /* ==================== Reset ==================== */
