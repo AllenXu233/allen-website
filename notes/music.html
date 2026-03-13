@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>古典音乐笔记 - Allen Xu</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&family=Inter:wght@300;400;500;600&family=Space+Mono&display=swap" rel="stylesheet">
+    <style>
+        .composer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .composer-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .composer-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+        .composer-emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .composer-card h3 {
+            margin-bottom: 0.5rem;
+        }
+        .composer-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .composer-detail {
+            display: none;
+            margin-top: 2rem;
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+        .composer-detail.active {
+            display: block;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">Allen Xu</a>
+            <ul class="nav-links">
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../writings.html">Writing</a></li>
+                <li><a href="../projects.html">Projects</a></li>
+                <li><a href="../reading.html">Reading</a></li>
+                <li><a href="../notes.html" class="active">Notes</a></li>
+                <li><a href="../fun.html">Fun</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page">
+        <div class="container">
+            <header class="page-header">
+                <h1>🎵 古典音乐笔记</h1>
+                <p class="page-subtitle">点击作曲家探索</p>
+            </header>
+
+            <div class="content">
+                <div class="composer-grid">
+                    <div class="composer-card" onclick="showComposer('beethoven')">
+                        <div class="composer-emoji">🎼</div>
+                        <h3>贝多芬</h3>
+                        <p>Ludwig van Beethoven</p>
+                    </div>
+                    <div class="composer-card" onclick="showComposer('chopin')">
+                        <div class="composer-emoji">🎹</div>
+                        <h3>肖邦</h3>
+                        <p>Frédéric Chopin</p>
+                    </div>
+                    <div class="composer-card" onclick="showComposer('mozart')">
+                        <div class="composer-emoji">✨</div>
+                        <h3>莫扎特</h3>
+                        <p>Wolfgang Amadeus Mozart</p>
+                    </div>
+                </div>
+
+                <div id="beethoven" class="composer-detail">
+                    <span class="back-btn" onclick="hideAll()">← 返回</span>
+                    <h2>🎼 贝多芬 (1770-1827)</h2>
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--accent);">生平</h3>
+                    <p>德国作曲家，维也纳古典乐派代表人物之一。命运多舛，26岁开始失聪，但仍创作出最伟大的作品。</p>
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--accent);">代表作品</h3>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-secondary);">
+                        <li>第九交响曲"合唱"</li>
+                        <li>第五交响曲"命运"</li>
+                        <li>第六交响曲"田园"</li>
+                        <li>钢琴奏鸣曲"月光"</li>
+                        <li>钢琴协奏曲第五号"皇帝"</li>
+                    </ul>
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--accent);">我的思考</h3>
+                    <p>贝多芬最打动我的不是他的音乐技巧，而是他与命运抗争的精神。当他完全失聪后还能写出第九交响曲，这是对人类意志力的最好诠释。他的音乐里有愤怒、有悲伤、有希望、有胜利——就像一个人完整的一生。</p>
+                </div>
+
+                <div id="chopin" class="composer-detail">
+                    <span class="back-btn" onclick="hideAll()">← 返回</span>
+                    <h2>🎹 肖邦 (1810-1849)</h2>
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--accent);">生平</h3>
+                    <p>波兰作曲家，钢琴诗人。短暂而璀璨的一生大多在巴黎度过，被称为"钢琴诗人"。</p>
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--accent);">代表作品</h3>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-secondary);">
+                        <li>24首前奏曲</li>
+                        <li>练习曲 Op.10, Op.25</li>
+                        <li>叙事曲 1-4</li>
+                        <li>夜曲全集</li>
+                        <li>波兰舞曲"英雄"</li>
+                    </ul>
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--accent);">我的思考</h3>
+                    <p>肖邦的音乐是私密的、近距离的，就像一个人在深夜对自己说话。他的旋律之美、用色之细腻，只有钢琴能表达。有人说他是"为钢琴而生的"，一点不为过。</p>
+                </div>
+
+                <div id="mozart" class="composer-detail">
+                    <span class="back-btn" onclick="hideAll()">← 返回</span>
+                    <h2>✨ 莫扎特 (1756-1791)</h2>
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--accent);">生平</h3>
+                    <p>奥地利作曲家，神童。一生创作了600多部作品，被誉为"音乐史上的奇才"。</p>
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--accent);">代表作品</h3>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-secondary);">
+                        <li>第40交响曲</li>
+                        <li>安魂曲</li>
+                        <li>土耳其进行曲</li>
+                        <li>费加罗的婚礼</li>
+                        <li>单簧管协奏曲</li>
+                    </ul>
+                    <h3 style="margin: 1.5rem 0 1rem; color: var(--accent);">我的思考</h3>
+                    <p>莫扎特的音乐是"纯粹的音乐"——不是为了表达什么深刻情感，而是音乐本身的美。他的旋律像是从天堂流下来的，干净、透明、没有杂质。听起来简单，但要写出这样的旋律，需要绝对的才华。</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© Allen Xu · All thoughts are mine.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showComposer(name) {
+            hideAll();
+            document.getElementById(name).classList.add('active');
+            document.getElementById(name).scrollIntoView({behavior: 'smooth'});
+        }
+        function hideAll() {
+            document.querySelectorAll('.composer-detail').forEach(el => {
+                el.classList.remove('active');
+            });
+        }
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

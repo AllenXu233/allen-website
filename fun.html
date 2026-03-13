@@ -9,6 +9,43 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&family=Inter:wght@300;400;500;600&family=Space+Mono&display=swap" rel="stylesheet">
+    <style>
+        .fun-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .fun-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .fun-card:hover {
+            transform: scale(1.02);
+            border-color: var(--accent);
+        }
+        .fun-detail {
+            display: none;
+            margin-top: 2rem;
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+        .fun-detail.active {
+            display: block;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <nav class="nav">
@@ -34,47 +71,120 @@
 
             <div class="content">
                 <div class="fun-grid">
-                    <article class="fun-card">
-                        <div class="fun-icon">🎵</div>
-                        <h3>古典音乐</h3>
-                        <p>贝多芬、莫扎特、肖邦、德彪西...</p>
-                    </article>
-
-                    <article class="fun-card">
+                    <div class="fun-card" onclick="showDetail('verstappen')">
                         <div class="fun-icon">🏎️</div>
-                        <h3>F1 赛车</h3>
-                        <p>关注维斯塔潘、法拉利车队</p>
-                    </article>
-
-                    <article class="fun-card">
+                        <h3>维斯塔潘粉丝</h3>
+                        <p>红牛车队 · Max Verstappen</p>
+                    </div>
+                    <div class="fun-card" onclick="showDetail('minecraft')">
                         <div class="fun-icon">🎮</div>
                         <h3>Minecraft</h3>
                         <p>建筑、红石、生存模式</p>
-                    </article>
-
-                    <article class="fun-card">
-                        <div class="fun-icon">🗺️</div>
-                        <h3>地理探索</h3>
-                        <p>喜欢看地图，研究世界各地</p>
-                    </article>
-
-                    <article class="fun-card">
-                        <div class="fun-icon">🔍</div>
-                        <h3>冷知识</h3>
-                        <p>奇怪的知识增加了！</p>
-                    </article>
-
-                    <article class="fun-card">
+                    </div>
+                    <div class="fun-card" onclick="showDetail('geoguessr')">
+                        <div class="fun-icon">🌍</div>
+                        <h3>图寻 (GeoGuessr)</h3>
+                        <p>地理猜测游戏</p>
+                    </div>
+                    <div class="fun-card" onclick="showDetail('coffee')">
                         <div class="fun-icon">☕</div>
                         <h3>咖啡</h3>
                         <p>拿铁、美式、手冲</p>
-                    </article>
+                    </div>
+                    <div class="fun-card" onclick="showDetail('knowledge')">
+                        <div class="fun-icon">🔍</div>
+                        <h3>冷知识</h3>
+                        <p>奇怪的知识增加了！</p>
+                    </div>
                 </div>
 
-                <div class="section-block" style="margin-top: 3rem;">
-                    <blockquote class="quote">
-                        <p>「有趣是对抗无聊最好的武器。」</p>
-                    </blockquote>
+                <!-- Verstappen Detail -->
+                <div id="verstappen" class="fun-detail">
+                    <span class="back-btn" onclick="hideAll()">← 返回</span>
+                    <h2>🏎️ 马克斯·维斯塔潘 (Max Verstappen)</h2>
+                    <div style="margin: 1.5rem 0;">
+                        <p><strong>车队：</strong>Red Bull Racing</p>
+                        <p><strong>国籍：</strong>荷兰</p>
+                        <p><strong>出生：</strong>1997年9月30日</p>
+                        <p><strong>F1首秀：</strong>2015年（当时仅18岁）</p>
+                        <p><strong>世界冠军：</strong>2021, 2022, 2023, 2024（4届）</p>
+                    </div>
+                    <h3 style="color: var(--accent); margin-bottom: 1rem;">为什么喜欢维斯塔潘？</h3>
+                    <p>他的比赛风格极具攻击性，永远不会放弃超车机会。从小在卡丁车道上长大，被誉为"下一代舒马赫"。</p>
+                    <p style="margin-top: 1rem;">2021年阿布扎比冠军争夺战是我看过最刺激的F1比赛！</p>
+                </div>
+
+                <!-- Minecraft Detail -->
+                <div id="minecraft" class="fun-detail">
+                    <span class="back-btn" onclick="hideAll()">← 返回</span>
+                    <h2>🎮 Minecraft</h2>
+                    <h3 style="color: var(--accent); margin-bottom: 1rem;">EarthMC 服务器 - 包头市</h3>
+                    <p>我正在 Minecraft EarthMC 服务器参与包头市城市建设项目！</p>
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="margin-bottom: 0.5rem;">🏗️ 参与建设</h4>
+                        <p style="color: var(--text-secondary);">在 EarthMC 的 Survival 模式中，我和队友们一起还原了包头市的标志性建筑。这是一个长期项目，欢迎加入一起建设！</p>
+                    </div>
+                    <div style="margin-top: 1rem;">
+                        <h4 style="margin-bottom: 0.5rem;">🎨 建筑风格</h4>
+                        <p style="color: var(--text-secondary);">喜欢古典和现代结合的风格，目前正在研究如何把草原城市的特色融入到游戏中。</p>
+                    </div>
+                </div>
+
+                <!-- GeoGuessr Detail -->
+                <div id="geoguessr" class="fun-detail">
+                    <span class="back-btn" onclick="hideAll()">← 返回</span>
+                    <h2>🌍 图寻 (GeoGuessr)</h2>
+                    <p>一款让你在随机街景中猜测地点的地理游戏。</p>
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="margin-bottom: 0.5rem;">🎮 玩法</h4>
+                        <ul style="padding-left: 1.2rem; color: var(--text-secondary);">
+                            <li>随机出现在世界某个角落</li>
+                            <li>通过观察建筑、道路、植被等线索</li>
+                            <li>在大地图上标记位置</li>
+                            <li>距离越近得分越高</li>
+                        </ul>
+                    </div>
+                    <div style="margin-top: 1rem;">
+                        <h4 style="margin-bottom: 0.5rem;">🏆 最高记录</h4>
+                        <p style="color: var(--text-secondary);">目前最好成绩：25000分（世界地图无限制模式）</p>
+                    </div>
+                    <div style="margin-top: 1rem;">
+                        <h4 style="margin-bottom: 0.5rem;">💡 技巧</h4>
+                        <p style="color: var(--text-secondary);">学会看车牌、路牌、建筑风格、植被类型...这些都是关键线索！</p>
+                    </div>
+                </div>
+
+                <!-- Coffee Detail -->
+                <div id="coffee" class="fun-detail">
+                    <span class="back-btn" onclick="hideAll()">← 返回</span>
+                    <h2>☕ 咖啡</h2>
+                    <p>每天一杯咖啡是必须的！</p>
+                    <div style="margin-top: 1rem;">
+                        <h4 style="margin-bottom: 0.5rem;">❤️ 最爱</h4>
+                        <p style="color: var(--text-secondary);">拿铁 - 奶香和咖啡的完美平衡</p>
+                    </div>
+                    <div style="margin-top: 1rem;">
+                        <h4 style="margin-bottom: 0.5rem;">☕ 尝试中</h4>
+                        <p style="color: var(--text-secondary);">手冲 - 正在学习手冲技巧</p>
+                    </div>
+                </div>
+
+                <!-- Knowledge Detail -->
+                <div id="knowledge" class="fun-detail">
+                    <span class="back-btn" onclick="hideAll()">← 返回</span>
+                    <h2>🔍 奇怪的知识</h2>
+                    <div style="margin-top: 1rem;">
+                        <p><strong>🧠 记忆面包真的可能吗？</strong></p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">科学家正在研究用基因编辑技术让大脑某些区域更擅长记忆...但目前还做不到</p>
+                    </div>
+                    <div style="margin-top: 1rem;">
+                        <p><strong>🍌 香蕉是辐射最强的水果</strong></p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">因为含有钾-40！但要吃1000万根才有害</p>
+                    </div>
+                    <div style="margin-top: 1rem;">
+                        <p><strong>🕐 一天不是24小时</strong></p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">地球自转在慢慢变慢，10亿年前一天只有19小时</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -86,6 +196,18 @@
         </div>
     </footer>
 
+    <script>
+        function showDetail(id) {
+            hideAll();
+            document.getElementById(id).classList.add('active');
+            document.getElementById(id).scrollIntoView({behavior: 'smooth'});
+        }
+        function hideAll() {
+            document.querySelectorAll('.fun-detail').forEach(el => {
+                el.classList.remove('active');
+            });
+        }
+    </script>
     <script src="js/main.js"></script>
 </body>
 </html>
