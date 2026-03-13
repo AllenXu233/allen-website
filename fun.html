@@ -10,6 +10,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&family=Inter:wght@300;400;500;600&family=Space+Mono&display=swap" rel="stylesheet">
     <style>
+        .fun-section-title {
+            font-size: 1.25rem;
+            color: var(--accent);
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
         .fun-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -19,7 +26,7 @@
             background: var(--bg-secondary);
             border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 2rem;
+            padding: 1.5rem;
             text-align: center;
             transition: all 0.3s;
             cursor: pointer;
@@ -27,6 +34,10 @@
         .fun-card:hover {
             transform: scale(1.02);
             border-color: var(--accent);
+        }
+        .fun-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
         }
         .fun-detail {
             display: none;
@@ -70,26 +81,63 @@
             </header>
 
             <div class="content">
+                <!-- Racing Games -->
+                <h3 class="fun-section-title">🏎️ 赛车游戏</h3>
                 <div class="fun-grid">
-                    <div class="fun-card" onclick="showDetail('verstappen')">
-                        <div class="fun-icon">🏎️</div>
-                        <h3>维斯塔潘粉丝</h3>
-                        <p>红牛车队 · Max Verstappen</p>
+                    <div class="fun-card" onclick="showDetail('realracing')">
+                        <div class="fun-icon">📱</div>
+                        <h3>Real Racing 3</h3>
+                        <p>EA 出品 mobile 赛车标杆</p>
                     </div>
-                    <div class="fun-card" onclick="showDetail('minecraft')">
-                        <div class="fun-icon">🎮</div>
-                        <h3>Minecraft</h3>
-                        <p>建筑、红石、生存模式</p>
+                    <div class="fun-card" onclick="showDetail('acc')">
+                        <div class="fun-icon">🖥️</div>
+                        <h3>神力科莎</h3>
+                        <p>Assetto Corsa Competizione</p>
                     </div>
+                </div>
+
+                <!-- Strategy Games -->
+                <h3 class="fun-section-title">🎯 策略与模拟游戏</h3>
+                <div class="fun-grid">
+                    <div class="fun-card" onclick="showDetail('vic3')">
+                        <div class="fun-icon">👑</div>
+                        <h3>维多利亚3</h3>
+                        <p>Paradox 史诗级历史策略</p>
+                    </div>
+                    <div class="fun-card" onclick="showDetail('mse')">
+                        <div class="fun-icon">🏦</div>
+                        <h3>金融帝国实验室</h3>
+                        <p>Capitalism Lab 商业模拟</p>
+                    </div>
+                    <div class="fun-card" onclick="showDetail('eu4')">
+                        <div class="fun-icon">🌍</div>
+                        <h3>欧陆风云4</h3>
+                        <p>Paradox 大航海时代</p>
+                    </div>
+                    <div class="fun-card" onclick="showDetail('cs2')">
+                        <div class="fun-icon">🏙️</div>
+                        <h3>都市天际线2</h3>
+                        <p>Cities: Skylines II 城市建造</p>
+                    </div>
+                    <div class="fun-card" onclick="showDetail('f1m24')">
+                        <div class="fun-icon">🏁</div>
+                        <h3>F1 Manager 2024</h3>
+                        <p>F1 车队经营模拟</p>
+                    </div>
+                    <div class="fun-card" onclick="showDetail('hoi4')">
+                        <div class="fun-icon">⚔️</div>
+                        <h3>钢铁雄心4</h3>
+                        <p>Hearts of Iron 4 二战策略</p>
+                    </div>
+                </div>
+
+                <!-- Other -->
+                <h3 class="fun-section-title">🌍 其他爱好</h3>
+                <div class="fun-grid">
                     <div class="fun-card" onclick="showDetail('geoguessr')">
                         <div class="fun-icon">🌍</div>
                         <h3>图寻 (GeoGuessr)</h3>
                         <p>地理猜测游戏</p>
-                    </div>
-                    <div class="fun-card" onclick="showDetail('coffee')">
-                        <div class="fun-icon">☕</div>
-                        <h3>咖啡</h3>
-                        <p>拿铁、美式、手冲</p>
                     </div>
                     <div class="fun-card" onclick="showDetail('knowledge')">
                         <div class="fun-icon">🔍</div>
@@ -98,44 +146,132 @@
                     </div>
                 </div>
 
-                <!-- Verstappen Detail -->
-                <div id="verstappen" class="fun-detail">
+                <!-- Game Details -->
+                <div id="realracing" class="fun-detail">
                     <span class="back-btn" onclick="hideAll()">← 返回</span>
-                    <h2>🏎️ 马克斯·维斯塔潘 (Max Verstappen)</h2>
-                    <div style="margin: 1.5rem 0;">
-                        <p><strong>车队：</strong>Red Bull Racing</p>
-                        <p><strong>国籍：</strong>荷兰</p>
-                        <p><strong>出生：</strong>1997年9月30日</p>
-                        <p><strong>F1首秀：</strong>2015年（当时仅18岁）</p>
-                        <p><strong>世界冠军：</strong>2021, 2022, 2023, 2024（4届）</p>
-                    </div>
-                    <h3 style="color: var(--accent); margin-bottom: 1rem;">为什么喜欢维斯塔潘？</h3>
-                    <p>他的比赛风格极具攻击性，永远不会放弃超车机会。从小在卡丁车道上长大，被誉为"下一代舒马赫"。</p>
-                    <p style="margin-top: 1rem;">2021年阿布扎比冠军争夺战是我看过最刺激的F1比赛！</p>
-                </div>
-
-                <!-- Minecraft Detail -->
-                <div id="minecraft" class="fun-detail">
-                    <span class="back-btn" onclick="hideAll()">← 返回</span>
-                    <h2>🎮 Minecraft</h2>
-                    <h3 style="color: var(--accent); margin-bottom: 1rem;">EarthMC 服务器 - 包头市</h3>
-                    <p>我正在 Minecraft EarthMC 服务器参与包头市城市建设项目！</p>
+                    <h2>📱 Real Racing 3</h2>
+                    <p style="color: var(--text-secondary); margin-top: 1rem;">EA Electronic Arts 出品的真实赛车手游，是移动端画质和手感最好的赛车游戏之一。</p>
                     <div style="margin-top: 1.5rem;">
-                        <h4 style="margin-bottom: 0.5rem;">🏗️ 参与建设</h4>
-                        <p style="color: var(--text-secondary);">在 EarthMC 的 Survival 模式中，我和队友们一起还原了包头市的标志性建筑。这是一个长期项目，欢迎加入一起建设！</p>
-                    </div>
-                    <div style="margin-top: 1rem;">
-                        <h4 style="margin-bottom: 0.5rem;">🎨 建筑风格</h4>
-                        <p style="color: var(--text-secondary);">喜欢古典和现代结合的风格，目前正在研究如何把草原城市的特色融入到游戏中。</p>
+                        <h4 style="margin-bottom: 0.5rem;">🎮 特点</h4>
+                        <ul style="padding-left: 1.2rem; color: var(--text-secondary);">
+                            <li>超过500辆真实赛车</li>
+                            <li>30条真实赛道</li>
+                            <li>令人惊叹的画质和操控手感</li>
+                            <li>多人在线对战</li>
+                        </ul>
                     </div>
                 </div>
 
-                <!-- GeoGuessr Detail -->
+                <div id="acc" class="fun-detail">
+                    <span class="back-btn" onclick="hideAll()">← 返回</span>
+                    <h2>🖥️ 神力科莎 (Assetto Corsa Competizione)</h2>
+                    <p style="color: var(--text-secondary); margin-top: 1rem;">Kunos Simulazioni 开发的专业级赛车模拟游戏，以其真实的物理引擎和光影效果闻名。</p>
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="margin-bottom: 0.5rem;">🎮 特点</h4>
+                        <ul style="padding-left: 1.2rem; color: var(--text-secondary);">
+                            <li>完美的 GT3 赛车体验</li>
+                            <li>真实的光影和天气系统</li>
+                            <li>支持 VR</li>
+                            <li>丰富的 MOD 支持</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="vic3" class="fun-detail">
+                    <span class="back-btn" onclick="hideAll()">← 返回</span>
+                    <h2>👑 维多利亚3 (Victoria 3)</h2>
+                    <p style="color: var(--text-secondary); margin-top: 1rem;">Paradox Interactive 发行的大型策略游戏，模拟从1836年到1936年的全球政治经济变迁。</p>
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="margin-bottom: 0.5rem;">🎮 特点</h4>
+                        <ul style="padding-left: 1.2rem; color: var(--text-secondary);">
+                            <li>深度的人口和经济系统</li>
+                            <li>复杂的政治博弈</li>
+                            <li>工业革命背景</li>
+                            <li>极高的可玩性</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="mse" class="fun-detail">
+                    <span class="back-btn" onclick="hideAll()">← 返回</span>
+                    <h2>🏦 金融帝国实验室 (Capitalism Lab)</h2>
+                    <p style="color: var(--text-secondary); margin-top: 1rem;">模拟经营类神作，让你从零开始建立商业帝国。</p>
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="margin-bottom: 0.5rem;">🎮 特点</h4>
+                        <ul style="padding-left: 1.2rem; color: var(--text-secondary);">
+                            <li>极深的经济模拟</li>
+                            <li>从零售到制造业的全产业链</li>
+                            <li>股票市场和并购</li>
+                            <li>商业策略的极致体验</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="eu4" class="fun-detail">
+                    <span class="back-btn" onclick="hideAll()">← 返回</span>
+                    <h2>🌍 欧陆风云4 (Europa Universalis IV)</h2>
+                    <p style="color: var(--text-secondary); margin-top: 1rem;">Paradox 最经典的策略游戏之一，涵盖大航海时代到法国大革命。</p>
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="margin-bottom: 0.5rem;">🎮 特点</h4>
+                        <ul style="padding-left: 1.2rem; color: var(--text-secondary);">
+                            <li>全球地图，任意国家</li>
+                            <li>贸易、外交、战争系统</li>
+                            <li> colonization 扩张</li>
+                            <li>极其丰富的 DLC</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="cs2" class="fun-detail">
+                    <span class="back-btn" onclick="hideAll()">← 返回</span>
+                    <h2>🏙️ 都市天际线2 (Cities: Skylines II)</h2>
+                    <p style="color: var(--text-secondary); margin-top: 1rem;">Colossal Order 开发的城市建造模拟游戏。</p>
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="margin-bottom: 0.5rem;">🎮 特点</h4>
+                        <ul style="padding-left: 1.2rem; color: var(--text-secondary);">
+                            <li>极致的城市细节</li>
+                            <li>复杂的经济和交通系统</li>
+                            <li>丰富的 MOD 支持</li>
+                            <li>打造梦想中的城市</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="f1m24" class="fun-detail">
+                    <span class="back-btn" onclick="hideAll()">← 返回</span>
+                    <h2>🏁 F1 Manager 2024</h2>
+                    <p style="color: var(--text-secondary); margin-top: 1rem;">Frontier Developments 出品的 F1 车队经营模拟游戏。</p>
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="margin-bottom: 0.5rem;">🎮 特点</h4>
+                        <ul style="padding-left: 1.2rem; color: var(--text-secondary);">
+                            <li>完整的 F1 赛季模拟</li>
+                            <li>车队策略制定</li>
+                            <li>车手和员工管理</li>
+                            <li>研发系统</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="hoi4" class="fun-detail">
+                    <span class="back-btn" onclick="hideAll()">← 返回</span>
+                    <h2>⚔️ 钢铁雄心4 (Hearts of Iron IV)</h2>
+                    <p style="color: var(--text-secondary); margin-top: 1rem;">Paradox 二战题材策略游戏，指挥你的国家赢得战争。</p>
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="margin-bottom: 0.5rem;">🎮 特点</h4>
+                        <ul style="padding-left: 1.2rem; color: var(--text-secondary);">
+                            <li>深度军事指挥系统</li>
+                            <li>科技树发展</li>
+                            <li>多种结局可能性</li>
+                            <li>历史战役重现</li>
+                        </ul>
+                    </div>
+                </div>
+
                 <div id="geoguessr" class="fun-detail">
                     <span class="back-btn" onclick="hideAll()">← 返回</span>
                     <h2>🌍 图寻 (GeoGuessr)</h2>
                     <p>一款让你在随机街景中猜测地点的地理游戏。</p>
-                    <div style="margin-top: 1.5rem;">
+                    <div style="margin-top: 1rem;">
                         <h4 style="margin-bottom: 0.5rem;">🎮 玩法</h4>
                         <ul style="padding-left: 1.2rem; color: var(--text-secondary);">
                             <li>随机出现在世界某个角落</li>
@@ -144,32 +280,8 @@
                             <li>距离越近得分越高</li>
                         </ul>
                     </div>
-                    <div style="margin-top: 1rem;">
-                        <h4 style="margin-bottom: 0.5rem;">🏆 最高记录</h4>
-                        <p style="color: var(--text-secondary);">目前最好成绩：25000分（世界地图无限制模式）</p>
-                    </div>
-                    <div style="margin-top: 1rem;">
-                        <h4 style="margin-bottom: 0.5rem;">💡 技巧</h4>
-                        <p style="color: var(--text-secondary);">学会看车牌、路牌、建筑风格、植被类型...这些都是关键线索！</p>
-                    </div>
                 </div>
 
-                <!-- Coffee Detail -->
-                <div id="coffee" class="fun-detail">
-                    <span class="back-btn" onclick="hideAll()">← 返回</span>
-                    <h2>☕ 咖啡</h2>
-                    <p>每天一杯咖啡是必须的！</p>
-                    <div style="margin-top: 1rem;">
-                        <h4 style="margin-bottom: 0.5rem;">❤️ 最爱</h4>
-                        <p style="color: var(--text-secondary);">拿铁 - 奶香和咖啡的完美平衡</p>
-                    </div>
-                    <div style="margin-top: 1rem;">
-                        <h4 style="margin-bottom: 0.5rem;">☕ 尝试中</h4>
-                        <p style="color: var(--text-secondary);">手冲 - 正在学习手冲技巧</p>
-                    </div>
-                </div>
-
-                <!-- Knowledge Detail -->
                 <div id="knowledge" class="fun-detail">
                     <span class="back-btn" onclick="hideAll()">← 返回</span>
                     <h2>🔍 奇怪的知识</h2>
