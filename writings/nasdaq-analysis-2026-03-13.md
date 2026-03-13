@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>纳斯达克指数深度分析报告 (2026年3月13日) - Allen Xu</title>
+    <title>纳指每日分析（2026/03/13） - Allen Xu</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/page.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -115,7 +115,7 @@
     <main class="page">
         <div class="container">
             <header class="page-header">
-                <h1>📈 纳斯达克指数深度分析报告</h1>
+                <h1>📈 纳指每日分析（2026/03/13）</h1>
                 <p class="page-subtitle">2026年3月13日 周五</p>
             </header>
 
