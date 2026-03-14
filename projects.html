@@ -22,29 +22,43 @@
             <span style="cursor:pointer;font-size:1.2rem;" onclick="closeMobileMenu()">✕</span>
         </div>
         <div class="mobile-menu-items">
-            <a href="index.html" class="mobile-menu-item"><span>🏠</span> 首页</a>
-            <a href="about.html" class="mobile-menu-item"><span>👤</span> 关于我</a>
-            <a href="writings.html" class="mobile-menu-item"><span>✍️</span> Writing</a>
-            <a href="projects.html" class="mobile-menu-item"><span>🛠️</span> Projects</a>
-            <a href="reading.html" class="mobile-menu-item"><span>📚</span> Reading</a>
-            <a href="notes.html" class="mobile-menu-item"><span>📝</span> Notes</a>
-            <a href="fun.html" class="mobile-menu-item"><span>🎮</span> Fun</a>
+            <a href="index.html" class="mobile-menu-item active">
+                <span>🏠</span> 首页
+            </a>
+            <a href="about.html" class="mobile-menu-item">
+                <span>👤</span> 关于我
+            </a>
+            <a href="writings.html" class="mobile-menu-item">
+                <span>✍️</span> Writing
+            </a>
+            <a href="projects.html" class="mobile-menu-item">
+                <span>🛠️</span> Projects
+            </a>
+            <a href="reading.html" class="mobile-menu-item">
+                <span>📚</span> Reading
+            </a>
+            <a href="notes.html" class="mobile-menu-item">
+                <span>📝</span> Notes
+            </a>
+            <a href="fun.html" class="mobile-menu-item">
+                <span>🎮</span> Fun
+            </a>
         </div>
         <div class="mobile-menu-divider"></div>
         <div class="mobile-theme-toggle">
             <span class="mobile-theme-label">🌙 夜间模式</span>
-            <div class="toggle-switch" onclick="toggleTheme()"><span class="toggle-icons">🌙</span></div>
+            <div class="toggle-switch" onclick="toggleTheme()">
+                <span class="toggle-icons">🌙</span>
+            </div>
         </div>
     </div>
 
-    <!-- Desktop Navigation -->
+    <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">Allen的小站</a>
-            
-            <!-- Toggle on far right + Mobile menu button -->
             <div class="nav-right">
-                <ul class="nav-links" id="navLinks">
+                <ul class="nav-links">
                     <li><a href="about.html">About</a></li>
                     <li><a href="writings.html">Writing</a></li>
                     <li><a href="projects.html">Projects</a></li>
@@ -52,55 +66,17 @@
                     <li><a href="notes.html">Notes</a></li>
                     <li><a href="fun.html">Fun</a></li>
                 </ul>
-                
-                <!-- Toggle Switch - far right -->
-                <div class="toggle-switch" onclick="toggleTheme()" title="切换主题" style="margin-right: 8px;">
+                <div class="toggle-switch" onclick="toggleTheme()" title="切换主题">
                     <span class="toggle-icons">🌙</span>
                 </div>
-                
-                <!-- Mobile menu button -->
                 <button class="mobile-menu-btn" onclick="openMobileMenu()">☰</button>
             </div>
         </div>
     </nav>
 
-    <script>
-    function toggleTheme() {
-        const html = document.documentElement;
-        const currentTheme = html.getAttribute("data-theme");
-        const newTheme = currentTheme === "dark" ? "light" : "dark";
-        html.setAttribute("data-theme", newTheme);
-        localStorage.setItem("theme", newTheme);
-    }
-    const savedTheme = localStorage.getItem("theme") || "light";
-    document.documentElement.setAttribute("data-theme", savedTheme);
-    function openMobileMenu() {
-        document.getElementById("mobileOverlay").style.display = "block";
-        document.getElementById("mobileMenu").style.display = "block";
-        document.body.style.overflow = "hidden";
-    }
-    function closeMobileMenu() {
-        document.getElementById("mobileOverlay").style.display = "none";
-        document.getElementById("mobileMenu").style.display = "none";
-        document.body.style.overflow = "";
-    }
-    </script>
+    
 
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">Allen Xu</a>
-            <ul class="nav-links">
-                <li><a href="about.html">About</a></li>
-                <li><a href="writings.html">Writing</a></li>
-                <li><a href="projects.html" class="active">Projects</a></li>
-                <li><a href="reading.html">Reading</a></li>
-                <li><a href="notes.html">Notes</a></li>
-                <li><a href="fun.html">Fun</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <main class="page">
+<main class="page">
         <div class="container">
             <header class="page-header">
                 <h1>我的项目</h1>
@@ -154,5 +130,9 @@
     </footer>
 
     <script src="js/main.js"></script>
+
+    <script src="js/main.js"></script>
 </body>
+</html>
+
 </html>
