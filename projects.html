@@ -37,12 +37,14 @@
         </div>
     </div>
 
-    <!-- Navigation -->
+    <!-- Desktop Navigation -->
     <nav class="nav">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">Allen的小站</a>
+            
+            <!-- Toggle on far right + Mobile menu button -->
             <div class="nav-right">
-                <ul class="nav-links">
+                <ul class="nav-links" id="navLinks">
                     <li><a href="about.html">About</a></li>
                     <li><a href="writings.html">Writing</a></li>
                     <li><a href="projects.html">Projects</a></li>
@@ -50,7 +52,13 @@
                     <li><a href="notes.html">Notes</a></li>
                     <li><a href="fun.html">Fun</a></li>
                 </ul>
-                <div class="toggle-switch" onclick="toggleTheme()" title="切换主题"><span class="toggle-icons">🌙</span></div>
+                
+                <!-- Toggle Switch - far right -->
+                <div class="toggle-switch" onclick="toggleTheme()" title="切换主题" style="margin-right: 8px;">
+                    <span class="toggle-icons">🌙</span>
+                </div>
+                
+                <!-- Mobile menu button -->
                 <button class="mobile-menu-btn" onclick="openMobileMenu()">☰</button>
             </div>
         </div>
@@ -146,9 +154,5 @@
     </footer>
 
     <script src="js/main.js"></script>
-
-    <script src="js/main.js"></script>
 </body>
-</html>
-
 </html>
