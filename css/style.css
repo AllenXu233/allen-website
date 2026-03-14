@@ -396,3 +396,10 @@ ul { list-style: none; }
 /* Prevent theme flash */
 html { background: #fff; }
 [data-theme="dark"] { background: #000; }
+
+
+/* Force nav background */
+.nav, .nav-container, .nav-logo, .nav-links, .nav-right {
+    background: transparent !important;
+    background-color: var(--bg-primary) !important;
+}
