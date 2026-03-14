@@ -37,7 +37,7 @@
 html { scroll-behavior: smooth; }
 body {
     font-family: var(--font-sans);
-    background: var(--bg-primary);
+    background: var(--bg-primary) !important;
     color: var(--text-primary);
     line-height: 1.6;
     min-height: 100vh;
@@ -56,11 +56,11 @@ ul { list-style: none; }
     right: 0;
     z-index: 1000;
     padding: 1rem 0;
-    background: var(--bg-primary);
+    background: var(--bg-primary) !important;
     backdrop-filter: var(--nav-blur);
     -webkit-backdrop-filter: var(--nav-blur);
     border-bottom: 1px solid var(--border);
-    transition: background 0.3s, border-color 0.3s;
+    transition: none;
 }
 
 .nav-container {
