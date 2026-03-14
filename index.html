@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Allen Xu | 探索无限</title>
+    <title>Allen的小站 | 探索无限</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,8 +12,14 @@
 <body>
     <nav class="nav">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">Allen Xu</a>
-            <ul class="nav-links">
+            <a href="index.html" class="nav-logo">Allen的小站</a>
+            <div style="display: flex; align-items: center;">
+                <button class="theme-toggle" onclick="toggleTheme()" title="切换主题">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            </div>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="about.html">About</a></li>
                 <li><a href="writings.html">Writing</a></li>
                 <li><a href="projects.html">Projects</a></li>
@@ -30,10 +36,14 @@
             <h1 class="hero-name">Allen Xu</h1>
             <p class="hero-intro">你所热爱的，就是你的生活</p>
             <p class="hero-tags">
-                <span class="tag">AI</span>
-                <span class="tag">心理学</span>
-                <span class="tag">古典音乐</span>
-                <span class="tag">系统思维</span>
+                <span class="tag" onclick="scrollToSection('aviation')">航空</span>
+                <span class="tag" onclick="scrollToSection('f1')">F1</span>
+                <span class="tag" onclick="scrollToSection('geek')">极客</span>
+                <span class="tag" onclick="scrollToSection('music')">古典音乐</span>
+                <span class="tag" onclick="scrollToSection('game')">游戏</span>
+                <span class="tag" onclick="scrollToSection('anime')">动漫</span>
+                <span class="tag" onclick="scrollToSection('data')">数据可视化</span>
+                <span class="tag" onclick="scrollToSection('finance')">金融</span>
             </p>
             <p class="hero-desc">
                 正在探索技术与思想如何塑造未来。<br>
@@ -80,42 +90,54 @@
 
     <footer class="footer">
         <div class="container">
-            <p>© 2026 Allen Xu · All thoughts are mine.</p>
+            <p>© Allen Xu · All thoughts are mine.</p>
             <div class="footer-links">
-                <a href="https://github.com" target="_blank">GitHub</a>
+                <a href="https://github.com/AllenXu233" target="_blank">GitHub</a>
                 <a href="mailto:allen@allenxu233.eu.org">Email</a>
             </div>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
-    
-    <!-- Live 2D Widget -->
-    <script src="https://unpkg.com/live2d-widget@3.1.4/lib/L2Dwidget.min.js"></script>
     <script>
-    L2Dwidget.init({
-        "model": {
-            "jsonPath": "https://unpkg.com/live2d-widget-model-miku@1.0.5/assets/miku.model.json",
-            "scale": 1
-        },
-        "display": {
-            "position": "right",
-            "width": 150,
-            "height": 200,
-            "hOffset": 0,
-            "vOffset": -20
-        },
-        "mobile": {
-            "show": true,
-            "scale": 0.6
-        },
-        "name": {
-            "show": false
-        },
-        "mobileShow": true,
-        "debug": false,
-        "drag": true
-    });
+        // Theme Toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        }
+        
+        function updateThemeIcon(theme) {
+            const icon = document.querySelector('.theme-icon');
+            icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+        
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const navLinks = document.getElementById('navLinks');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+        
+        // Tag click handler
+        function scrollToSection(section) {
+            alert('正在开发: ' + section + ' 相关内容');
+        }
     </script>
 </body>
 </html>
