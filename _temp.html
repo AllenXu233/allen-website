@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <button class="mobile-toggle-btn" onclick="toggleMobileMenu()">☰</button>
     <!-- Mobile Overlay -->
     <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
     
@@ -20,25 +21,25 @@
             <span style="cursor:pointer;font-size:1.2rem;" onclick="closeMobileMenu()">✕</span>
         </div>
         <div class="mobile-menu-items">
-            <a href="index.html" class="mobile-menu-item active">
+            <a href="index.html" onclick="closeMobileMenu()" class="mobile-menu-item">
                 <span>🏠</span> 首页
             </a>
-            <a href="about.html" class="mobile-menu-item">
+            <a href="about.html" onclick="closeMobileMenu()" class="mobile-menu-item">
                 <span>👤</span> 关于我
             </a>
-            <a href="writings.html" class="mobile-menu-item">
+            <a href="writings.html" onclick="closeMobileMenu()" class="mobile-menu-item">
                 <span>✍️</span> Writing
             </a>
-            <a href="projects.html" class="mobile-menu-item">
+            <a href="projects.html" onclick="closeMobileMenu()" class="mobile-menu-item">
                 <span>🛠️</span> Projects
             </a>
-            <a href="reading.html" class="mobile-menu-item">
+            <a href="reading.html" onclick="closeMobileMenu()" class="mobile-menu-item">
                 <span>📚</span> Reading
             </a>
-            <a href="notes.html" class="mobile-menu-item">
+            <a href="notes.html" onclick="closeMobileMenu()" class="mobile-menu-item">
                 <span>📝</span> Notes
             </a>
-            <a href="fun.html" class="mobile-menu-item">
+            <a href="fun.html" onclick="closeMobileMenu()" class="mobile-menu-item">
                 <span>🎮</span> Fun
             </a>
         </div>
@@ -54,15 +55,15 @@
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">Allen的小站</a>
+            <a href="index.html" onclick="closeMobileMenu()" class="nav-logo">Allen的小站</a>
             <div class="nav-right">
                 <ul class="nav-links">
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="writings.html">Writing</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="reading.html">Reading</a></li>
-                    <li><a href="notes.html">Notes</a></li>
-                    <li><a href="fun.html">Fun</a></li>
+                    <li><a href="about.html" onclick="closeMobileMenu()">About</a></li>
+                    <li><a href="writings.html" onclick="closeMobileMenu()">Writing</a></li>
+                    <li><a href="projects.html" onclick="closeMobileMenu()">Projects</a></li>
+                    <li><a href="reading.html" onclick="closeMobileMenu()">Reading</a></li>
+                    <li><a href="notes.html" onclick="closeMobileMenu()">Notes</a></li>
+                    <li><a href="fun.html" onclick="closeMobileMenu()">Fun</a></li>
                 </ul>
                 <div class="toggle-switch" onclick="toggleTheme()" title="切换主题">
                     <span class="toggle-icons">🌙</span>
@@ -93,8 +94,8 @@
                 Building my digital garden on the internet.
             </p>
             <div class="hero-cta">
-                <a href="about.html" class="btn btn-primary">了解更多</a>
-                <a href="writings.html" class="btn btn-secondary">阅读思考</a>
+                <a href="about.html" onclick="closeMobileMenu()" class="btn btn-primary">了解更多</a>
+                <a href="writings.html" onclick="closeMobileMenu()" class="btn btn-secondary">阅读思考</a>
             </div>
         </div>
         <div class="hero-visual">
@@ -108,22 +109,22 @@
     <section class="section quick-links">
         <div class="container">
             <div class="links-grid">
-                <a href="writings.html" class="link-card">
+                <a href="writings.html" onclick="closeMobileMenu()" class="link-card">
                     <span class="link-icon">✍️</span>
                     <h3>Writing</h3>
                     <p>思考与观察</p>
                 </a>
-                <a href="projects.html" class="link-card">
+                <a href="projects.html" onclick="closeMobileMenu()" class="link-card">
                     <span class="link-icon">🛠️</span>
                     <h3>Projects</h3>
                     <p>我的作品</p>
                 </a>
-                <a href="reading.html" class="link-card">
+                <a href="reading.html" onclick="closeMobileMenu()" class="link-card">
                     <span class="link-icon">📚</span>
                     <h3>Reading</h3>
                     <p>阅读书单</p>
                 </a>
-                <a href="notes.html" class="link-card">
+                <a href="notes.html" onclick="closeMobileMenu()" class="link-card">
                     <span class="link-icon">📝</span>
                     <h3>Notes</h3>
                     <p>知识笔记</p>
@@ -144,7 +145,19 @@
 
     <script>
         // Theme Toggle
-        function toggleTheme() {
+        function toggleMobileMenu() {
+        var menu = document.getElementById("mobileMenu");
+        var overlay = document.getElementById("mobileOverlay");
+        if (menu.classList.contains("active")) {
+            menu.classList.remove("active");
+            overlay.classList.remove("active");
+        } else {
+            menu.classList.add("active");
+            overlay.classList.add("active");
+        }
+    }
+
+    function toggleTheme() {
             const html = document.documentElement;
             const currentTheme = html.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
