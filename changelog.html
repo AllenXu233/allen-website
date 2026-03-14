@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light" onload="document.documentElement.setAttribute('data-theme', localStorage.getAttribute('theme') || 'light')">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>更新日志 - Allen的小站</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600" rel="stylesheet">
+    <script>document.documentElement.setAttribute("data-theme", localStorage.getItem("theme") || "light");</script>
+</head>
+<body>
+    <!-- Mobile Toggle -->
+    <button class="mobile-toggle-btn" onclick="toggleMobileMenu()">☰</button>
+    
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <span class="mobile-menu-title">菜单</span>
+            <span style="cursor:pointer;font-size:1.2rem;" onclick="closeMobileMenu()">✕</span>
+        </div>
+        <div class="mobile-menu-items">
+            <a href="index.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>🏠</span> 首页</a>
+            <a href="about.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>👤</span> 关于我</a>
+            <a href="writings.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>✍️</span> Writing</a>
+            <a href="projects.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>🛠️</span> Projects</a>
+            <a href="reading.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>📚</span> Reading</a>
+            <a href="notes.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>📝</span> Notes</a>
+            <a href="fun.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>🎮</span> Fun</a>
+        </div>
+        <div class="mobile-menu-divider"></div>
+        <div class="mobile-theme-toggle">
+            <span class="mobile-theme-label">🌙 夜间模式</span>
+            <div class="toggle-switch" onclick="toggleTheme()"><span class="toggle-icons">🌙</span></div>
+        </div>
+    </div>
+
+    <!-- Desktop Nav -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Allen的小站</a>
+            <div class="nav-right">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="writings.html">Writing</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="reading.html">Reading</a></li>
+                    <li><a href="notes.html">Notes</a></li>
+                    <li><a href="fun.html">Fun</a></li>
+                    <li><a href="changelog.html">更新日志</a></li>
+                </ul>
+                <div class="toggle-switch" onclick="toggleTheme()" title="切换主题" style="margin-right: 8px;">
+                    <span class="toggle-icons">🌙</span>
+                </div>
+                <button class="mobile-menu-btn" onclick="openMobileMenu()">☰</button>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+    function toggleTheme() {
+        var html = document.documentElement;
+        var currentTheme = html.getAttribute("data-theme");
+        var newTheme = currentTheme === "dark" ? "light" : "dark";
+        html.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+    }
+    function openMobileMenu() {
+        document.getElementById("mobileOverlay").style.display = "block";
+        document.getElementById("mobileMenu").style.display = "block";
+        document.body.style.overflow = "hidden";
+    }
+    function closeMobileMenu() {
+        document.getElementById("mobileOverlay").style.display = "none";
+        document.getElementById("mobileMenu").style.display = "none";
+        document.body.style.overflow = "";
+    }
+    function toggleMobileMenu() {
+        var menu = document.getElementById("mobileMenu");
+        var overlay = document.getElementById("mobileOverlay");
+        if (menu.classList.contains("active")) {
+            menu.classList.remove("active");
+            overlay.classList.remove("active");
+        } else {
+            menu.classList.add("active");
+            overlay.classList.add("active");
+        }
+    }
+    </script>
+
+    <main class="page">
+        <div class="container">
+            <header class="page-header">
+                <h1>📝 更新日志</h1>
+                <p class="page-subtitle">网站每一次更新的记录</p>
+            </header>
+
+            <div class="content">
+                <div class="article-content">
+                    <h2>2026/03/14</h2>
+                    
+                    <h3>🌙 深色/浅色模式</h3>
+                    <ul>
+                        <li>新增深色/浅色模式切换 Toggle 开关</li>
+                        <li>电脑版：导航栏右侧 Toggle 按钮</li>
+                        <li>手机版：左上角圆形菜单按钮，菜单内含 Toggle</li>
+                        <li>主题自动记忆，切换页面保持一致</li>
+                    </ul>
+                    
+                    <h3>📱 手机端优化</h3>
+                    <ul>
+                        <li>隐藏顶部大导航栏，只保留菜单按钮</li>
+                        <li>菜单加丝滑动画效果</li>
+                        <li>点击链接后菜单自动关闭</li>
+                        <li>当前页面高亮显示</li>
+                    </ul>
+                    
+                    <h3>🏷️ 首页特质</h3>
+                    <ul>
+                        <li>标题改为"Allen的小站"</li>
+                        <li>特质改为：航空、F1、极客、古典音乐、游戏、动漫、数据可视化、金融</li>
+                        <li>每个特质可点击，有悬停毛玻璃效果</li>
+                    </ul>
+                    
+                    <h3>📰 Writing 页面</h3>
+                    <ul>
+                        <li>新增纳指每日分析报告（2026/03/13）</li>
+                        <li>新增《漓江之声》EarthMC杂志</li>
+                        <li>新增 F1 新闻</li>
+                        <li>所有文章日期格式统一为 YYYY/MM/DD</li>
+                    </ul>
+                    
+                    <h3>💬 其他更新</h3>
+                    <ul>
+                        <li>网站上线：allenxu233.eu.org</li>
+                        <li>集成 Giscus 评论系统</li>
+                        <li>添加 Live 2D 初音未来看板娘</li>
+                    </ul>
+                    
+                    <h3>⚙️ 技术配置</h3>
+                    <ul>
+                        <li>托管：GitHub Pages</li>
+                        <li>域名：allenxu233.eu.org</li>
+                        <li>CDN：Cloudflare</li>
+                    </ul>
+                    
+                    <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+                    
+                    <p style="text-align: center; color: var(--text-muted);">
+                        更多更新敬请期待...
+                    </p>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="writings.html" class="btn btn-secondary">← 返回 Writing</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© Allen Xu · All thoughts are mine.</p>
+        </div>
+    </footer>
+</body>
+</html>
