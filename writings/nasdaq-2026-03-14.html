@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+    <script>document.documentElement.setAttribute("data-theme", localStorage.getItem("theme") || "light");</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>纳指每日分析（2026/03/14） - Allen的小站</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <button class="mobile-toggle-btn" onclick="toggleMobileMenu()"><span>☰</span></button>
+    
+    <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <span class="mobile-menu-title">菜单</span>
+            <span style="cursor:pointer;font-size:1.2rem;" onclick="closeMobileMenu()">×</span>
+        </div>
+        <div class="mobile-menu-items">
+            <a href="/index.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>🏠</span> 首页</a>
+            <a href="/about.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>👤</span> 关于我</a>
+            <a href="/writings.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>✍️</span> Writing</a>
+            <a href="/projects.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>🛠️</span> Projects</a>
+            <a href="/reading.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>📚</span> Reading</a>
+            <a href="/notes.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>📝</span> Notes</a>
+            <a href="/fun.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>🎮</span> Fun</a>
+        </div>
+        <div class="mobile-menu-divider"></div>
+        <div class="mobile-theme-toggle">
+            <span class="mobile-theme-label">🌙 夜间模式</span>
+            <div class="toggle-switch" onclick="toggleTheme()"><span class="toggle-icons">🌙</span></div>
+        </div>
+    </div>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="/index.html" class="nav-logo">Allen的小站</a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/writings.html" class="active">Writing</a></li>
+                    <li><a href="/projects.html">Projects</a></li>
+                    <li><a href="/reading.html">Reading</a></li>
+                    <li><a href="/notes.html">Notes</a></li>
+                    <li><a href="/fun.html">Fun</a></li>
+                </ul>
+                <div class="toggle-switch" onclick="toggleTheme()" title="切换主题">
+                    <span class="toggle-icons">🌙</span>
+                </div>
+                <button class="mobile-menu-btn" onclick="openMobileMenu()">☰</button>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+    function toggleTheme() {
+        var html = document.documentElement;
+        var currentTheme = html.getAttribute("data-theme");
+        var newTheme = currentTheme === "dark" ? "light" : "dark";
+        html.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+    }
+    function openMobileMenu() {
+        document.getElementById("mobileOverlay").classList.add("active");
+        document.getElementById("mobileMenu").classList.add("active");
+    }
+    function closeMobileMenu() {
+        var btn = document.querySelector(".mobile-toggle-btn");
+        if (btn) btn.classList.remove("active");
+        document.getElementById("mobileOverlay").classList.remove("active");
+        document.getElementById("mobileMenu").classList.remove("active");
+    }
+    function toggleMobileMenu() {
+        var menu = document.getElementById("mobileMenu");
+        var overlay = document.getElementById("mobileOverlay");
+        var btn = document.querySelector(".mobile-toggle-btn");
+        if (menu.classList.contains("active")) {
+            closeMobileMenu();
+        } else {
+            openMobileMenu();
+            if (btn) btn.classList.add("active");
+        }
+    }
+    </script>
+
+    <main class="page">
+        <div class="container">
+            <header class="page-header">
+                <div style="text-align:left;margin-bottom:1rem;"><a href="/writings.html" class="btn btn-secondary">← 返回文章列表</a></div>
+                <h1>📈 纳指每日分析（2026/03/14）</h1>
+                <p class="page-subtitle">每日总结美股市场状况，评估市场情绪与风险</p>
+            </header>
+
+            <div class="content">
+                <div class="article-content">
+                    <div class="article-meta">
+                        📅 <strong>分析日期：</strong>2026年3月14日 | 📊 <strong>分析师：</strong>Ayanami
+                    </div>
+
+                    <h2>【1】今日市场核心数据</h2>
+                    <table>
+                        <tr><th>指数</th><th>收盘价</th><th>涨跌幅</th><th>数据来源</th></tr>
+                        <tr><td>NASDAQ</td><td>22,105.36</td><td>+0.93%</td><td>FearGreedMeter</td></tr>
+                        <tr><td>S&P 500</td><td>6,632.19</td><td>+0.61%</td><td>FearGreedMeter</td></tr>
+                        <tr><td>Dow Jones</td><td>46,558.47</td><td>+0.26%</td><td>FearGreedMeter</td></tr>
+                    </table>
+
+                    <h2>【2】市场情绪指标 - Fear & Greed Index</h2>
+                    <div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 12px; margin: 1rem 0;">
+                        <p style="font-size: 1.2rem; margin-bottom: 0.5rem;"><strong>当前指数：20</strong></p>
+                        <p style="color: #ef4444;">😰 极度恐惧 (Extreme Fear)</p>
+                        <p style="color: var(--text-secondary); margin-top: 1rem;">较昨日(21)下降1点，市场情绪持续低迷</p>
+                    </div>
+                    <table>
+                        <tr><th>时间</th><th>指数</th><th>情绪</th></tr>
+                        <tr><td>今日</td><td>20</td><td>极度恐惧</td></tr>
+                        <tr><td>昨日</td><td>21</td><td>极度恐惧</td></tr>
+                        <tr><td>1周前</td><td>25</td><td>恐惧</td></tr>
+                        <tr><td>1月前</td><td>37</td><td>恐惧</td></tr>
+                    </table>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">📊 数据来源：feargreedmeter.com</p>
+
+                    <h2>【3】综合判断</h2>
+                    <div class="score-box">
+                        综合评分：<span class="highlight-yellow">4/10</span> | 市场状态：<span style="color: #ef4444;">极度恐惧</span>
+                    </div>
+                    
+                    <p>纳斯达克指数今日上涨 0.93%，但 Fear & Greed Index 仍处于极度恐惧区域(20)。市场情绪低迷，投资者保持谨慎。科技股有一定反弹，但整体风险偏好仍低。</p>
+
+                    <h2>【4】风险提示</h2>
+                    <ul>
+                        <li>⚠️ 市场情绪极度恐惧，可能存在反弹机会，但也可能继续下跌</li>
+                        <li>⚠️ 本报告仅供参考，不构成投资建议</li>
+                        <li>⚠️ 投资有风险，入市需谨慎</li>
+                    </ul>
+
+                    <div class="disclaimer">
+                        <p><strong>📊 数据来源：</strong>FearGreedMeter | TradingView | Yahoo Finance</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="/writings.html" class="btn btn-secondary">← 返回文章列表</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© Allen Xu · All thoughts are mine.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-CN" data-theme="light">
 <head>
-        <script>
-    // Auto theme based on time of day (6:00-18:00 = light, else = dark)
-    var hour = new Date().getHours();
-    var timeBasedTheme = (hour >= 6 && hour < 18) ? 'light' : 'dark';
-    // Override with user preference if exists
-    var savedTheme = localStorage.getItem('theme');
-    var theme = savedTheme || timeBasedTheme;
-    document.documentElement.setAttribute('data-theme', theme);
+    <script>
+        // Auto theme based on time of day (6:00-18:00 = light, else = dark)
+        var hour = new Date().getHours();
+        var timeBasedTheme = (hour >= 6 && hour < 18) ? 'light' : 'dark';
+        // Override with user preference if exists
+        var savedTheme = localStorage.getItem('theme');
+        var theme = savedTheme || timeBasedTheme;
+        document.documentElement.setAttribute('data-theme', theme);
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +18,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+    
     <script src="https://giscus.app/client.js"
         data-repo="AllenXu233/allen-website"
         data-repo-id="R_kgDORmEiPw"
@@ -33,37 +34,73 @@
         crossorigin="anonymous"
         async>
     </script>
+
+    <style>
+        .fun-section-title {
+            font-size: 1.25rem;
+            color: var(--accent);
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .fun-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .fun-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .fun-card:hover {
+            transform: scale(1.02);
+            border-color: var(--accent);
+        }
+        .fun-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .fun-detail {
+            display: none;
+            margin-top: 2rem;
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+        .fun-detail.active {
+            display: block;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <script>
-function showDetail(id) {
-            hideAll();
-            document.getElementById(id).classList.add('active');
-            document.getElementById(id).scrollIntoView({behavior: 'smooth'});
-        }
-        function hideAll() {
-            document.querySelectorAll('.fun-detail').forEach(el => {
-                el.classList.remove('active');
-            }
-    </script>
     <button class="mobile-toggle-btn" onclick="toggleMobileMenu()"><span>☰</span></button>
     
-    <!-- Mobile Overlay -->
     <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
-    <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-header">
             <span class="mobile-menu-title">菜单</span>
             <span style="cursor:pointer;font-size:1.2rem;" onclick="closeMobileMenu()">×</span>
         </div>
         <div class="mobile-menu-items">
-            <a href="/index.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>🏠</span> 首页</a>
-            <a href="/about.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>👤</span> 关于我</a>
-            <a href="/writings.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>✍️</span> Writing</a>
-            <a href="/projects.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>🛠️</span> Projects</a>
-            <a href="/reading.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>📚</span> Reading</a>
-            <a href="/notes.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>📝</span> Notes</a>
-            <a href="/fun.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>🎮</span> Fun</a>
+            <a href="index.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>🏠</span> 首页</a>
+            <a href="about.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>👤</span> 关于我</a>
+            <a href="writings.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>✍️</span> Writing</a>
+            <a href="projects.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>🛠️</span> Projects</a>
+            <a href="reading.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>📚</span> Reading</a>
+            <a href="notes.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>📝</span> Notes</a>
+            <a href="fun.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>🎮</span> Fun</a>
         </div>
         <div class="mobile-menu-divider"></div>
         <div class="mobile-theme-toggle">
@@ -72,18 +109,17 @@ function showDetail(id) {
         </div>
     </div>
 
-
     <nav class="nav">
         <div class="nav-container">
-            <a href="/index.html" onclick="closeMobileMenu()" class="nav-logo">Allen的小站</a>
+            <a href="index.html" onclick="closeMobileMenu()" class="nav-logo">Allen的小站</a>
             <div class="nav-right">
                 <ul class="nav-links">
-                    <li><a href="/about.html" onclick="closeMobileMenu()" >About</a></li>
-                    <li><a href="/writings.html" onclick="closeMobileMenu()">Writing</a></li>
-                    <li><a href="/projects.html" onclick="closeMobileMenu()">Projects</a></li>
-                    <li><a href="/reading.html" onclick="closeMobileMenu()">Reading</a></li>
-                    <li><a href="/notes.html" onclick="closeMobileMenu()">Notes</a></li>
-                    <li><a href="/fun.html" onclick="closeMobileMenu()">Fun</a></li>
+                    <li><a href="about.html" onclick="closeMobileMenu()" >About</a></li>
+                    <li><a href="writings.html" onclick="closeMobileMenu()">Writing</a></li>
+                    <li><a href="projects.html" onclick="closeMobileMenu()">Projects</a></li>
+                    <li><a href="reading.html" onclick="closeMobileMenu()">Reading</a></li>
+                    <li><a href="notes.html" onclick="closeMobileMenu()">Notes</a></li>
+                    <li><a href="fun.html" onclick="closeMobileMenu()">Fun</a></li>
                 </ul>
                 <div class="toggle-switch" onclick="toggleTheme()" title="切换主题">
                     <span class="toggle-icons">🌙</span>
@@ -101,7 +137,6 @@ function showDetail(id) {
             </header>
 
             <div class="content">
-                <!-- Racing Games -->
                 <h3 class="fun-section-title">🏎️ 赛车游戏</h3>
                 <div class="fun-grid">
                     <div class="fun-card" onclick="showDetail('realracing')">
@@ -116,7 +151,6 @@ function showDetail(id) {
                     </div>
                 </div>
 
-                <!-- Strategy Games -->
                 <h3 class="fun-section-title">🎯 策略与模拟游戏</h3>
                 <div class="fun-grid">
                     <div class="fun-card" onclick="showDetail('vic3')">
@@ -151,7 +185,6 @@ function showDetail(id) {
                     </div>
                 </div>
 
-                <!-- Other -->
                 <h3 class="fun-section-title">🌍 其他爱好</h3>
                 <div class="fun-grid">
                     <div class="fun-card" onclick="showDetail('geoguessr')">
@@ -166,7 +199,6 @@ function showDetail(id) {
                     </div>
                 </div>
 
-                <!-- Game Details -->
                 <div id="realracing" class="fun-detail">
                     <span class="back-btn" onclick="hideAll()">← 返回</span>
                     <h2>📱 Real Racing 3</h2>
@@ -329,14 +361,18 @@ function showDetail(id) {
     </footer>
 
     <script>
-        );
+        function showDetail(id) {
+            hideAll();
+            document.getElementById(id).classList.add('active');
+            document.getElementById(id).scrollIntoView({behavior: 'smooth'});
+        }
+        function hideAll() {
+            document.querySelectorAll('.fun-detail').forEach(el => {
+                el.classList.remove('active');
+            });
         }
     </script>
     <script src="js/main.js"></script>
-    <script>
-    );
-    }
-    </script>
     <script>
     function toggleTheme() {
         var html = document.documentElement;
