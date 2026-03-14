@@ -392,3 +392,7 @@ ul { list-style: none; }
     .hero-cta { flex-direction: column; }
     .links-grid { grid-template-columns: 1fr; }
 }
+
+/* Prevent theme flash */
+html { background: #fff; }
+[data-theme="dark"] { background: #000; }
