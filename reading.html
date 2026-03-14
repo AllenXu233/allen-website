@@ -80,12 +80,8 @@
 
     <nav class="nav">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">Allen的小站</a>
-            <div style="display: flex; align-items: center;">
-                <button class="theme-toggle" onclick="toggleTheme()" title="切换主题"><span class="theme-icon">🌙</span></button>
-                <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
-            </div>
-            <ul class="nav-links" id="navLinks">
+            <a href="index.html" class="nav-logo">Allen Xu</a>
+            <ul class="nav-links">
                 <li><a href="about.html">About</a></li>
                 <li><a href="writings.html">Writing</a></li>
                 <li><a href="projects.html">Projects</a></li>
@@ -143,24 +139,8 @@
 
     <script src="js/main.js"></script>
 
-    <script>
-    function toggleTheme() {
-        const h = document.documentElement;
-        const t = h.getAttribute("data-theme") === "dark" ? "light" : "dark";
-        h.setAttribute("data-theme", t);
-        localStorage.setItem("theme", t);
-        const icon = document.querySelector(".theme-icon");
-        if(icon) icon.textContent = t === "dark" ? "☀️" : "🌙";
-    }
-    function toggleMenu() {
-        const nav = document.getElementById("navLinks");
-        if(nav) nav.classList.toggle("active");
-    }
-    const savedTheme = localStorage.getItem("theme") || "light";
-    document.documentElement.setAttribute("data-theme", savedTheme);
-    const icon = document.querySelector(".theme-icon");
-    if(icon) icon.textContent = savedTheme === "dark" ? "☀️" : "🌙";
-    </script>
-
+    <script src="js/main.js"></script>
 </body>
+</html>
+
 </html>
