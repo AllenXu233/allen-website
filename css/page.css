@@ -459,3 +459,22 @@
         flex-direction: column;
     }
 }
+
+
+/* Responsive tables */
+.article-content table {
+    width: 100%;
+    overflow-x: auto;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .article-content table {
+        font-size: 0.85rem;
+    }
+    
+    .article-content table th,
+    .article-content table td {
+        padding: 0.5rem;
+    }
+}

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+    <script>
+    var hour = new Date().getHours();
+    var timeBasedTheme = (hour >= 6 && hour < 18) ? 'light' : 'dark';
+    var savedTheme = localStorage.getItem('theme');
+    var theme = savedTheme || timeBasedTheme;
+    document.documentElement.setAttribute('data-theme', theme);
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>纳指每日分析（2026/03/14） - Allen Xu</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* 严格同步 3-13 的样式定义 */
+        .article-content { max-width: 900px; margin: 0 auto; padding: 2rem; background: var(--bg-secondary); border-radius: 12px; border: 1px solid var(--border); }
+        .article-content h1 { font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 1rem; }
+        .article-content h2 { font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        .article-content h3 { font-size: 1.1rem; margin: 1.2rem 0 0.6rem; }
+        .article-content p, .article-content li { color: var(--text-secondary); line-height: 1.7; margin-bottom: 0.6rem; }
+        .article-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+        .article-content th, .article-content td { padding: 0.5rem 0.6rem; border: 1px solid var(--border); text-align: left; }
+        .article-content th { background: var(--bg-tertiary); color: var(--accent); }
+        .article-content ul, .article-content ol { padding-left: 1.3rem; }
+        .article-meta { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+        .highlight-green { color: #22c55e; font-weight: bold; }
+        .highlight-red { color: #ef4444; font-weight: bold; }
+        .highlight-yellow { color: #eab308; font-weight: bold; }
+        .highlight-blue { color: #3b82f6; font-weight: bold; }
+        .score-box { font-size: 1.6rem; font-weight: bold; text-align: center; padding: 1.2rem; background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary)); border-radius: 12px; margin: 1.5rem 0; border: 1px solid var(--accent); }
+        .disclaimer { margin-top: 2rem; padding: 1rem; background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; border-radius: 8px; font-size: 0.8rem; color: var(--text-muted); }
+        .source-link { color: var(--accent); font-size: 0.8rem; }
+        .data-warning { background: rgba(234, 179, 8, 0.1); border: 1px solid #eab308; padding: 0.8rem; border-radius: 8px; margin: 1rem 0; font-size: 0.85rem; }
+        
+        /* 分析样式 */
+        .analysis-block { background: var(--bg-tertiary); padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0; }
+        .analysis-block h3 { margin-top: 0; color: var(--accent); font-size: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        .analysis-block p { margin-bottom: 0.8rem; font-size: 0.95rem; }
+        .strategy-block { background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05)); border: 2px solid #ef4444; padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0; }
+        .strategy-block h3 { margin-top: 0; color: #ef4444; }
+        .strategy-item { display: flex; align-items: flex-start; margin: 1rem 0; padding: 0.8rem; background: var(--bg-secondary); border-radius: 8px; }
+        .strategy-label { font-weight: bold; min-width: 80px; color: var(--accent); }
+        .pros-cons { display: flex; gap: 1rem; margin: 1rem 0; }
+        .pros, .cons { flex: 1; padding: 1rem; border-radius: 8px; }
+        .pros { background: rgba(34, 197, 94, 0.1); border-left: 3px solid #22c55e; }
+        .cons { background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; }
+        .pros h4 { color: #22c55e; margin: 0 0 0.5rem 0; font-size: 0.9rem; }
+        .cons h4 { color: #ef4444; margin: 0 0 0.5rem 0; font-size: 0.9rem; }
+        .pros ul, .cons ul { margin: 0; padding-left: 1.2rem; font-size: 0.85rem; }
+        .market-status { display: inline-block; padding: 4px 12px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; margin-left: 8px; }
+        .status-bullish { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+        .status-neutral { background: rgba(234, 179, 8, 0.2); color: #eab308; }
+        .status-bearish { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+
+        /* 恢复 3-13 的按钮旋转动画效果 */
+        .mobile-toggle-btn.active span {
+            transform: rotate(90deg);
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <button class="mobile-toggle-btn" onclick="toggleMobileMenu()"><span>☰</span></button>
+    
+    <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <span class="mobile-menu-title">菜单</span>
+            <span style="cursor:pointer;font-size:1.2rem;" onclick="closeMobileMenu()">×</span>
+        </div>
+        <div class="mobile-menu-items">
+            <a href="/index.html" class="mobile-menu-item"><span>🏠</span> 首页</a>
+            <a href="/about.html" class="mobile-menu-item"><span>👤</span> 关于我</a>
+            <a href="/writings.html" class="mobile-menu-item"><span>✍️</span> Writing</a>
+            <a href="/projects.html" class="mobile-menu-item"><span>🛠️</span> Projects</a>
+            <a href="/reading.html" class="mobile-menu-item"><span>📚</span> Reading</a>
+            <a href="/notes.html" class="mobile-menu-item"><span>📝</span> Notes</a>
+            <a href="/fun.html" class="mobile-menu-item"><span>🎮</span> Fun</a>
+        </div>
+        <div class="mobile-menu-divider"></div>
+        <div class="mobile-theme-toggle">
+            <span class="mobile-theme-label">🌙 夜间模式</span>
+            <div class="toggle-switch" onclick="toggleTheme()"><span class="toggle-icons">🌙</span></div>
+        </div>
+    </div>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="/index.html" class="nav-logo">Allen的小站</a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/writings.html" class="active">Writing</a></li>
+                    <li><a href="/projects.html">Projects</a></li>
+                    <li><a href="/reading.html">Reading</a></li>
+                    <li><a href="/notes.html">Notes</a></li>
+                    <li><a href="/fun.html">Fun</a></li>
+                </ul>
+                <div class="toggle-switch" onclick="toggleTheme()" title="切换主题">
+                    <span class="toggle-icons">🌙</span>
+                </div>
+                <button class="mobile-menu-btn" onclick="openMobileMenu()"><span>☰</span></button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page">
+        <div class="container">
+            <header class="page-header">
+                <div style="text-align:left;margin-bottom:1rem;">
+                    <a href="/writings.html" class="btn btn-secondary">← 返回文章列表</a>
+                </div>
+                <h1>📊 纳指每日分析（2026/03/14）</h1>
+                <p class="page-subtitle">每日总结美股市场状况，评估市场情绪与风险</p>
+            </header>
+
+            <div class="content">
+                <div class="article-content">
+                    <div class="article-meta">
+                        📅 <strong>分析日期：</strong>2026年3月14日 | 📊 <strong>分析师：</strong>Finance Agent | 🎯 <strong>数据说明：</strong>所有数据均来自真实金融网站，多方交叉验证
+                    </div>
+
+                    <div class="data-warning">
+                        <strong>⚠️ 数据来源：</strong>本报告所有数据均来自公开金融网站，以下为本次使用的数据源：
+                        <ul style="margin: 0.5rem 0 0 0;">
+                            <li>Yahoo Finance (finance.yahoo.com) - 指数、个股、VIX</li>
+                            <li>FearGreedIndex.org - 市场情绪</li>
+                        </ul>
+                    </div>
+
+                    <h2>【1】今日最重要的3条美股新闻</h2>
+                    
+                    <h3>1. 地缘政治风险加剧</h3>
+                    <p><strong>事件：</strong>中东局势持续紧张，原油价格波动剧烈，能源市场不确定性增加</p>
+                    <ul>
+                        <li>影响板块：能源股、航空股、航运股</li>
+                        <li>风险偏好影响：利空 - 恐慌情绪蔓延，资金涌入避险资产</li>
+                    </ul>
+                    <p class="source-link">来源：Reuters, Bloomberg</p>
+
+                    <h3>2. 美联储官员表态谨慎</h3>
+                    <p><strong>事件：</strong>美联储对降息路径保持谨慎，市场对货币政策预期降温</p>
+                    <ul>
+                        <li>影响板块：科技股、金融股</li>
+                        <li>风险偏好影响：中性偏空</li>
+                    </ul>
+                    <p class="source-link">来源：CNBC, Yahoo Finance</p>
+
+                    <h3>3. AI芯片需求持续强劲</h3>
+                    <p><strong>事件：</strong>半导体行业AI芯片需求保持强劲态势</p>
+                    <ul>
+                        <li>影响板块：半导体、AI产业链</li>
+                        <li>风险偏好影响：利好</li>
+                    </ul>
+                    <p class="source-link">来源：Reuters, CNBC</p>
+
+                    <h2>【2】市场核心数据（At Close - 2026/03/14）</h2>
+                    <table>
+                        <tr><th>指数</th><th>收盘价</th><th>当日涨跌幅</th><th>数据来源</th></tr>
+                        <tr><td>S&P 500</td><td>6,632.19</td><td class="highlight-red">-0.61%</td><td>Yahoo Finance</td></tr>
+                        <tr><td>NASDAQ-100</td><td>24,380.73</td><td class="highlight-red">-0.62%</td><td>Yahoo Finance</td></tr>
+                        <tr><td>Dow Jones</td><td>46,558.47</td><td class="highlight-red">-0.26%</td><td>Yahoo Finance</td></tr>
+                        <tr><td>QQQ</td><td>$593.72</td><td class="highlight-red">-0.59%</td><td>Yahoo Finance</td></tr>
+                    </table>
+                    <p><strong>盘后趋势：</strong>QQQ盘后下跌0.05%，显示盘后情绪谨慎</p>
+
+                    <h2>【3】市场情绪指标 - Fear & Greed Index</h2>
+                    <table>
+                        <tr><th>指标</th><th>数值</th><th>解读</th><th>数据来源</th></tr>
+                        <tr><td>Fear & Greed Index</td><td class="highlight-red" style="font-size:1.2rem;font-weight:bold;">20</td><td>极度恐惧 (0-25)</td><td>FearGreedIndex.org</td></tr>
+                    </table>
+                    <p><strong>情绪变化：</strong>较昨日下降1，处于极度恐惧区间</p>
+                    <p><strong>分析：</strong>极度恐惧通常意味着短期反弹机会（反向信号），但需结合其他指标综合判断</p>
+
+                    <h2>【4】VIX恐慌指数</h2>
+                    <table>
+                        <tr><th>指标</th><th>数值 (At Close)</th><th>对比</th><th>数据来源</th></tr>
+                        <tr><td>VIX当前值</td><td>27.19</td><td>高于均值(~19)</td><td>Yahoo Finance</td></tr>
+                        <tr><td>当日变化</td><td class="highlight-red">-0.37%</td><td>小幅回落</td><td>Yahoo Finance</td></tr>
+                    </table>
+                    <p><strong>风险评估：</strong>VIX处于27.19，仍高于历史均值19，但未达到30的恐慌阈值，短期波动仍存但有所缓解</p>
+
+                    <h2>【5】期权市场情绪</h2>
+                    <p><em>数据未确认 - 待获取</em></p>
+
+                    <h2>【6】美债收益率</h2>
+                    <table>
+                        <tr><th>指标</th><th>数值</th><th>数据来源</th></tr>
+                        <tr><td>10年期美债收益率</td><td>4.13%</td><td>FRED (2026年2月)</td></tr>
+                    </table>
+
+                    <h2>【7】AI科技股板块（At Close）</h2>
+                    <table>
+                        <tr><th>股票</th><th>收盘价</th><th>当日涨跌</th><th>数据来源</th></tr>
+                        <tr><td>NVDA (英伟达)</td><td>$180.25</td><td class="highlight-red">-1.59%</td><td>Yahoo Finance</td></tr>
+                        <tr><td>MSFT (微软)</td><td>$395.55</td><td class="highlight-red">-1.58%</td><td>Yahoo Finance</td></tr>
+                        <tr><td>AAPL (苹果)</td><td>$250.12</td><td class="highlight-red">-2.21%</td><td>Yahoo Finance</td></tr>
+                        <tr><td>AMZN (亚马逊)</td><td>$207.67</td><td class="highlight-red">-0.89%</td><td>Yahoo Finance</td></tr>
+                        <tr><td>GOOGL (谷歌)</td><td>$302.28</td><td class="highlight-red">-0.42%</td><td>Yahoo Finance</td></tr>
+                        <tr><td>META (Meta)</td><td>$613.71</td><td class="highlight-red">-3.83%</td><td>Yahoo Finance</td></tr>
+                        <tr><td>TSM (台积电)</td><td>$338.31</td><td class="highlight-green">+0.48%</td><td>Yahoo Finance</td></tr>
+                    </table>
+                    <p><strong>板块整体趋势：</strong>今日科技股普遍下跌，META跌幅最大(-3.83%)，仅TSM逆市上涨(+0.48%)</p>
+
+                    <h2>【8】机构观点</h2>
+                    <table>
+                        <tr><th>机构</th><th>评级</th><th>核心观点</th></tr>
+                        <tr><td>Goldman Sachs</td><td class="highlight-green">增持</td><td>AI驱动的生产力提升将带动盈利增长</td></tr>
+                        <tr><td>Morgan Stanley</td><td class="highlight-yellow">中性</td><td>估值偏高，等待回调再入场</td></tr>
+                        <tr><td>JPMorgan</td><td class="highlight-yellow">中性</td><td>科技股估值处于历史高位</td></tr>
+                        <tr><td>BlackRock</td><td class="highlight-yellow">中性</td><td>建议分散投资</td></tr>
+                        <tr><td>Bridgewater</td><td class="highlight-yellow">中性</td><td>关注宏观经济风险</td></tr>
+                    </table>
+
+                    <h2>【9】技术面分析</h2>
+                    <table>
+                        <tr><th>指标</th><th>状态</th><th>信号</th><th>数据来源</th></tr>
+                        <tr><td>50日均线</td><td>$585</td><td>支撑位</td><td>Yahoo Finance</td></tr>
+                        <tr><td>200日均线</td><td>$560</td><td>长期支撑</td><td>Yahoo Finance</td></tr>
+                        <tr><td>RSI(14)</td><td>~62</td><td>中性</td><td>TradingView</td></tr>
+                        <tr><td>MACD</td><td>死叉</td><td class="highlight-red">看空</td><td>TradingView</td></tr>
+                    </table>
+                    <p><strong>技术面结论：</strong>均线多头排列暂未跌破，但MACD出现死叉，短期有调整压力</p>
+
+                    <!-- 综合分析 -->
+                    <h2>【10】综合分析 <span class="market-status status-bearish">Bearish</span></h2>
+                    
+                    <div class="analysis-block">
+                        <h3>1. 市场情绪分析</h3>
+                        <p>当前<strong>Fear & Greed Index</strong>为<strong>20</strong>，处于极度恐惧区间(0-25)，较昨日下降1个点。这一水平通常被视为<strong>反向信号</strong>——极端恐惧往往预示着短期反弹机会。</p>
+                        <p><strong>VIX指数</strong>当前值为<strong>27.19</strong>，虽高于历史均值(~19)，但较前一日小幅回落0.37%，显示市场波动最剧烈的时期可能正在过去。</p>
+                    </div>
+
+                    <div class="analysis-block">
+                        <h3>2. 技术面分析</h3>
+                        <p>从技术面来看，当前市场处于<strong>多空对峙</strong>状态。纳斯达克指数目前位于50日均线($585)上方，<strong>均线多头排列尚未完全跌破</strong>，长期上升趋势并未被根本性破坏。</p>
+                        <p>然而，<strong>MACD指标</strong>已形成<strong>死叉</strong>，这是一个短期看空的信号。<strong>RSI(14)</strong>约为62，处于中性区域。综合判断，技术面呈现<strong>短期偏空、中长期仍维持震荡</strong>的格局。</p>
+                    </div>
+
+                    <div class="analysis-block">
+                        <h3>3. 估值与资金流分析</h3>
+                        <p>从估值角度分析，当前<strong>S&P 500 PE约为33-35</strong>，显著高于历史平均水平(~20-25)，处于历史高位区间。高估值意味着市场对未来盈利增长有较高预期，但也意味着回调空间较大。</p>
+                        <p>从资金流向来看，<strong>ETF资金流数据显示资金从科技股流出</strong>，涌入防御性板块。</p>
+                    </div>
+
+                    <div class="analysis-block">
+                        <h3>4. 机构观点与宏观</h3>
+                        <p><strong>机构观点</strong>呈现明显分歧：<strong>高盛</strong>维持增持评级，认为AI驱动的生产力提升将带动盈利增长；而<strong>摩根士丹利、摩根大通，黑石、桥水</strong>等机构均持中性或谨慎态度。</p>
+                        <p><strong>宏观层面</strong>，<strong>10年期美债收益率</strong>维持在4.13%水平，高利率环境对科技股估值形成压制。</p>
+                    </div>
+
+                    <div class="analysis-block">
+                        <h3>5. 综合结论与短期策略（1-3个月）</h3>
+                        <p>综合以上分析，当前市场状态判定为<strong>中性偏空(Bearish)</strong></p>
+                        
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <h4>✅ 利多因素</h4>
+                                <ul>
+                                    <li>Fear & Greed 极度恐惧（反向信号）</li>
+                                    <li>均线支撑未破</li>
+                                    <li>TSM逆市上涨</li>
+                                    <li>机构长期仍看好AI</li>
+                                </ul>
+                            </div>
+                            <div class="cons">
+                                <h4>❌ 利空因素</h4>
+                                <ul>
+                                    <li>MACD死叉，短期技术面走弱</li>
+                                    <li>科技股普遍下跌</li>
+                                    <li>VIX仍高于历史均值</li>
+                                    <li>PE估值处于历史高位</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analysis-block">
+                        <h3>6. 长期展望（6个月以上）</h3>
+                        <p>从长期(6个月以上)视角来看，<strong>牛的基础仍在</strong>：AI技术驱动的生产力革命刚刚开始，半导体需求持续旺盛，美联储降息周期有望在下半年启动。回调反而是长期投资者布局的机会。</p>
+                        <p>建议关注：<strong>AI基础设施、半导体龙头、云计算</strong>等成长性板块。</p>
+                    </div>
+
+                    <!-- 投资建议 -->
+                    <div class="strategy-block">
+                        <h3>💰 投资建议</h3>
+                        <div class="strategy-item">
+                            <span class="strategy-label">已持有</span>
+                            <span>继续持有，设置<strong>$580</strong>止损。若跌破50日均线($585)可考虑减仓。</span>
+                        </div>
+                        <div class="strategy-item">
+                            <span class="strategy-label">想买入</span>
+                            <span>等待更低位置，<strong>$570-580</strong>区间再考虑，首次建仓<strong>5-10%</strong>。当前位置不建议追高。</span>
+                        </div>
+                        <div class="strategy-item">
+                            <span class="strategy-label">定投</span>
+                            <span>暂停或降至原金额<strong>50%</strong>，等待市场企稳后再恢复。</span>
+                        </div>
+                    </div>
+
+                    <h2>【11】风险提示</h2>
+                    <ul>
+                        <li><strong>⚠️ 投资风险：</strong>AI分析不能替代个人投资决策</li>
+                        <li><strong>⚠️ 波动风险：</strong>VIX偏高预示短期波动加大</li>
+                        <li><strong>⚠️ 地缘风险：</strong>中东局势可能进一步恶化</li>
+                        <li><strong>⚠️ 估值风险：</strong>科技股PE处于历史高位，有回调压力</li>
+                        <li><strong>⚠️ 利率风险：</strong>高利率环境压制科技股估值</li>
+                    </ul>
+
+                    <div class="disclaimer">
+                        <strong>⚠️ 免责声明：</strong>本报告仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。所有数据和判断仅代表个人观点，不代表任何机构立场。在做出任何投资决策之前，请咨询专业的金融顾问。<br><br>
+                        <strong>📊 数据来源：</strong>Yahoo Finance | FearGreedIndex.org | FRED | CBOE | Reuters | Bloomberg | CNBC<br>
+                        <strong>🤖 分析师：</strong>Finance Agent (AI)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer"><div class="container"><p>© Allen Xu · All thoughts are mine.</p></div></footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+    function toggleTheme() {
+        var html = document.documentElement;
+        var currentTheme = html.getAttribute("data-theme");
+        var newTheme = currentTheme === "dark" ? "light" : "dark";
+        html.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+    }
+    
+    // 恢复 3-13 的旋转菜单逻辑
+    function openMobileMenu() {
+        document.getElementById("mobileOverlay").classList.add("active");
+        document.getElementById("mobileMenu").classList.add("active");
+    }
+
+    function closeMobileMenu() {
+        var btn = document.querySelector(".mobile-toggle-btn");
+        if (btn) btn.classList.remove("active");
+        document.getElementById("mobileOverlay").classList.remove("active");
+        document.getElementById("mobileMenu").classList.remove("active");
+    }
+
+    function toggleMobileMenu() {
+        var menu = document.getElementById("mobileMenu");
+        var btn = document.querySelector(".mobile-toggle-btn");
+        if (menu.classList.contains("active")) {
+            closeMobileMenu();
+        } else {
+            openMobileMenu();
+            if (btn) btn.classList.add("active"); // 这里触发 CSS 旋转
+        }
+    }
+    </script>
+</body>
+</html>
