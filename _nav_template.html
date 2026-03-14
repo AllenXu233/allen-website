@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <button class="mobile-toggle-btn" onclick="toggleMobileMenu()">☰</button>
+    <button class="mobile-toggle-btn" onclick="toggleMobileMenu()"><span>☰</span></button>
     <nav class="nav">
         <div class="nav-container">
             <a href="index.html" onclick="closeMobileMenu()" class="nav-logo">Allen的小站</a>
@@ -99,58 +99,218 @@
         </div>
     </footer>
 
+    
     <script>
-        // Theme Toggle
-        function toggleMobileMenu() {
+    // Auto theme based on time of day (6:00-18:00 = light, else = dark)
+    var hour = new Date().getHours();
+    var timeBasedTheme = (hour >= 6 && hour < 18) ? 'light' : 'dark';
+    // Override with user preference if exists
+    var savedTheme = localStorage.getItem('theme');
+    var theme = savedTheme || timeBasedTheme;
+    document.documentElement.setAttribute('data-theme', theme);
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Allen Xu</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <!-- Mobile Toggle -->
+    <button class="mobile-toggle-btn" onclick="toggleMobileMenu()"><span>☰</span></button>
+    
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <span class="mobile-menu-title">菜单</span>
+            <span style="cursor:pointer;font-size:1.2rem;" onclick="closeMobileMenu()">×</span>
+        </div>
+        <div class="mobile-menu-items">
+            <a href="index.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>🏠</span> 首页</a>
+            <a href="about.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>👤</span> 关于我</a>
+            <a href="writings.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>✍️</span> Writing</a>
+            <a href="projects.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>🛠️</span> Projects</a>
+            <a href="reading.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>📚</span> Reading</a>
+            <a href="notes.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>📝</span> Notes</a>
+            <a href="fun.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>🎮</span> Fun</a>
+        </div>
+        <div class="mobile-menu-divider"></div>
+        <div class="mobile-theme-toggle">
+            <span class="mobile-theme-label">🌙 夜间模式</span>
+            <div class="toggle-switch" onclick="toggleTheme()"><span class="toggle-icons">🌙</span></div>
+        </div>
+    </div>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" onclick="closeMobileMenu()" class="nav-logo">Allen的小站</a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="about.html" onclick="closeMobileMenu()" class="active">About</a></li>
+                    <li><a href="writings.html" onclick="closeMobileMenu()">Writing</a></li>
+                    <li><a href="projects.html" onclick="closeMobileMenu()">Projects</a></li>
+                    <li><a href="reading.html" onclick="closeMobileMenu()">Reading</a></li>
+                    <li><a href="notes.html" onclick="closeMobileMenu()">Notes</a></li>
+                    <li><a href="fun.html" onclick="closeMobileMenu()">Fun</a></li>
+                </ul>
+                <div class="toggle-switch" onclick="toggleTheme()" title="切换主题">
+                    <span class="toggle-icons">🌙</span>
+                </div>
+                <button class="mobile-menu-btn" onclick="openMobileMenu()"><span>☰</span></button>
+            </div>
+        </div>
+    </nav>
+
+        <div class="nav-container">
+            
+            <ul class="nav-links">
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="writings.html">Writing</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="reading.html">Reading</a></li>
+                <li><a href="notes.html">Notes</a></li>
+                <li><a href="fun.html">Fun</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page">
+        <div class="container">
+            <header class="page-header">
+                <h1>关于我</h1>
+                <p class="page-subtitle">我是谁，我在思考什么</p>
+            </header>
+
+            <article class="content">
+                <section class="section-block">
+                    <h2>基本信息</h2>
+                    <ul class="info-list">
+                        <li><strong>身份：</strong>一名普通高中生</li>
+                        <li><strong>位置：</strong>中国 上海</li>
+                    </ul>
+                </section>
+
+                <section class="section-block">
+                    <h2>兴趣领域</h2>
+                    <div class="interests-grid">
+                        <div class="interest-card">
+                            <span class="interest-icon">🤖</span>
+                            <h3>AI & 技术</h3>
+                            <p>探索人工智能如何改变学习、工作和思考方式。正在学习如何使用 OpenClaw 等 AI 工具提升效率。</p>
+                        </div>
+                        <div class="interest-card">
+                            <span class="interest-icon">🧠</span>
+                            <h3>心理学</h3>
+                            <p>对认知心理学、行为经济学感兴趣。研究人们如何做决策、为什么会有偏见。</p>
+                        </div>
+                        <div class="interest-card">
+                            <span class="interest-icon">🎵</span>
+                            <h3>古典音乐</h3>
+                            <p>正在学习耶鲁大学公开课《聆听音乐》。喜欢贝多芬、莫扎特、肖邦。</p>
+                        </div>
+                        <div class="interest-card">
+                            <span class="interest-icon">🌱</span>
+                            <h3>学习方法</h3>
+                            <p>研究如何更高效地学习。关注间隔重复、主动回忆、费曼学习法等技巧。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section-block">
+                    <h2>正在做的事情</h2>
+                    <ul class="todo-list">
+                        <li>📚 学习耶鲁大学古典音乐课程</li>
+                        <li>💻 探索 AI 工具辅助学习</li>
+                        <li>✍️ 写作思考文章</li>
+                        <li>🌐 搭建这个个人网站</li>
+                        <li>🏎️ 关注 F1 和赛车游戏</li>
+                        <li>🎮 策略与模拟游戏</li>
+                    </ul>
+                </section>
+
+                <section class="section-block">
+                    <h2>我的思考</h2>
+                    <blockquote class="quote">
+                        <p>「互联网时代真正稀缺的不是信息，而是清晰表达自己思考方式的能力。」</p>
+                    </blockquote>
+                    <p>我希望通过这个网站记录自己的成长和思考。这不是一个简历，而是一扇通往我大脑的门。</p>
+                    <p>我相信：</p>
+                    <ul class="belief-list">
+                        <li>🌳 像经营花园一样经营自己的知识</li>
+                        <li>📝 写作是思考最好的催化剂</li>
+                        <li>🔄 持续微小改进 > 一次性完美</li>
+                        <li>🤔 质疑一切，包括自己的想法</li>
+                    </ul>
+                </section>
+
+                <section class="section-block">
+                    <h2>联系我</h2>
+                    <p>如果你想交流想法，或者只是想打个招呼：</p>
+                    <div class="contact-links">
+                        <a href="https://github.com/AllenXu233" target="_blank" class="contact-btn">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="https://space.bilibili.com/396604925" target="_blank" class="contact-btn">
+                            <i class="fab fa-bilibili"></i> Bilibili
+                        </a>
+                        <a href="https://qm.qq.com/cgi-bin/qm/qr?k=3593690453" target="_blank" class="contact-btn">
+                            <i class="fab fa-qq"></i> QQ
+                        </a>
+                        <a href="mailto:3593690453@qq.com" class="contact-btn">
+                            <i class="fas fa-at"></i> QQ邮箱
+                        </a>
+                        <a href="mailto:xuallen98@gmail.com" class="contact-btn">
+                            <i class="fab fa-google"></i> Gmail
+                        </a>
+                    </div>
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© Allen Xu · All thoughts are mine.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+    function toggleTheme() {
+        var html = document.documentElement;
+        var currentTheme = html.getAttribute("data-theme");
+        var newTheme = currentTheme === "dark" ? "light" : "dark";
+        html.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+    }
+    function openMobileMenu() {
+        document.getElementById("mobileOverlay").classList.add("active");
+        document.getElementById("mobileMenu").classList.add("active");
+    }
+    function closeMobileMenu() {
+        var btn = document.querySelector(".mobile-toggle-btn"); if (btn) btn.classList.remove("active");
+        var btn = document.querySelector(".mobile-toggle-btn");
+        if (btn) btn.classList.remove("active");
+        document.getElementById("mobileOverlay").classList.remove("active");
+        document.getElementById("mobileMenu").classList.remove("active");
+    }
+    function toggleMobileMenu() {
         var menu = document.getElementById("mobileMenu");
         var overlay = document.getElementById("mobileOverlay");
+        var btn = document.querySelector(".mobile-toggle-btn");
         if (menu.classList.contains("active")) {
-            menu.classList.remove("active");
-            overlay.classList.remove("active");
+            closeMobileMenu();
         } else {
-            menu.classList.add("active");
-            overlay.classList.add("active");
+            openMobileMenu();
+            if (btn) btn.classList.add("active");
         }
     }
-
-    function toggleTheme() {
-            const html = document.documentElement;
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon(newTheme);
-        }
-        
-        function updateThemeIcon(theme) {
-            const icon = document.querySelector('.theme-icon');
-            icon.textContent = theme === 'dark' ? '☀️' : '🌙';
-        }
-        
-        // Load saved theme
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        updateThemeIcon(savedTheme);
-        
-        // Mobile Menu Toggle
-        function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
-        }
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            const navLinks = document.getElementById('navLinks');
-            const menuBtn = document.querySelector('.mobile-menu-btn');
-            if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
-                navLinks.classList.remove('active');
-            }
-        });
-        
-        // Tag click handler
-        function scrollToSection(section) {
-            alert('正在开发: ' + section + ' 相关内容');
-        }
     </script>
 </body>
 </html>

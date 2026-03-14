@@ -1,132 +1,99 @@
 <!DOCTYPE html>
 <html lang="zh-CN" data-theme="light">
 <head>
-    <script>document.documentElement.setAttribute("data-theme", localStorage.getItem("theme") || "light");</script>
+        <script>
+    // Auto theme based on time of day (6:00-18:00 = light, else = dark)
+    var hour = new Date().getHours();
+    var timeBasedTheme = (hour >= 6 && hour < 18) ? 'light' : 'dark';
+    // Override with user preference if exists
+    var savedTheme = localStorage.getItem('theme');
+    var theme = savedTheme || timeBasedTheme;
+    document.documentElement.setAttribute('data-theme', theme);
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fun - Allen Xu</title>
-    <link rel="stylesheet" href="css/style.css?v=2">
-    <link rel="stylesheet" href="css/page.css?v=2">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/page.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600" rel="stylesheet">
-    <style>
-        .fun-section-title {
-            font-size: 1.25rem;
-            color: var(--accent);
-            margin: 2rem 0 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border);
-        }
-        .fun-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-        .fun-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-        .fun-card:hover {
-            transform: scale(1.02);
-            border-color: var(--accent);
-        }
-        .fun-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.75rem;
-        }
-        .fun-detail {
-            display: none;
-            margin-top: 2rem;
-            padding: 2rem;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-        }
-        .fun-detail.active {
-            display: block;
-        }
-        .back-btn {
-            display: inline-block;
-            margin-bottom: 1rem;
-            color: var(--accent);
-            cursor: pointer;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://giscus.app/client.js"
+        data-repo="AllenXu233/allen-website"
+        data-repo-id="R_kgDORmEiPw"
+        data-category="General"
+        data-category-id="DIC_kwDORmEiP84C4TqR"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+    </script>
 </head>
 <body>
-    <button class="mobile-toggle-btn" onclick="toggleMobileMenu()">☰</button>
-
+    <script>
+function showDetail(id) {
+            hideAll();
+            document.getElementById(id).classList.add('active');
+            document.getElementById(id).scrollIntoView({behavior: 'smooth'});
+        }
+        function hideAll() {
+            document.querySelectorAll('.fun-detail').forEach(el => {
+                el.classList.remove('active');
+            }
+    </script>
+    <button class="mobile-toggle-btn" onclick="toggleMobileMenu()"><span>☰</span></button>
+    
     <!-- Mobile Overlay -->
     <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
-    
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-header">
             <span class="mobile-menu-title">菜单</span>
-            <span style="cursor:pointer;font-size:1.2rem;" onclick="closeMobileMenu()">✕</span>
+            <span style="cursor:pointer;font-size:1.2rem;" onclick="closeMobileMenu()">×</span>
         </div>
         <div class="mobile-menu-items">
-            <a href="index.html" onclick="closeMobileMenu()" class="mobile-menu-item">
-                <span>🏠</span> 首页
-            </a>
-            <a href="about.html" onclick="closeMobileMenu()" class="mobile-menu-item">
-                <span>👤</span> 关于我
-            </a>
-            <a href="writings.html" onclick="closeMobileMenu()" class="mobile-menu-item">
-                <span>✍️</span> Writing
-            </a>
-            <a href="projects.html" onclick="closeMobileMenu()" class="mobile-menu-item">
-                <span>🛠️</span> Projects
-            </a>
-            <a href="reading.html" onclick="closeMobileMenu()" class="mobile-menu-item">
-                <span>📚</span> Reading
-            </a>
-            <a href="notes.html" onclick="closeMobileMenu()" class="mobile-menu-item">
-                <span>📝</span> Notes
-            </a>
-            <a href="fun.html" onclick="closeMobileMenu()" class="mobile-menu-item">
-                <span>🎮</span> Fun
-            </a>
+            <a href="/index.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>🏠</span> 首页</a>
+            <a href="/about.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>👤</span> 关于我</a>
+            <a href="/writings.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>✍️</span> Writing</a>
+            <a href="/projects.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>🛠️</span> Projects</a>
+            <a href="/reading.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>📚</span> Reading</a>
+            <a href="/notes.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>📝</span> Notes</a>
+            <a href="/fun.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>🎮</span> Fun</a>
         </div>
         <div class="mobile-menu-divider"></div>
         <div class="mobile-theme-toggle">
             <span class="mobile-theme-label">🌙 夜间模式</span>
-            <div class="toggle-switch" onclick="toggleTheme()">
-                <span class="toggle-icons">🌙</span>
-            </div>
+            <div class="toggle-switch" onclick="toggleTheme()"><span class="toggle-icons">🌙</span></div>
         </div>
     </div>
 
-    <!-- Navigation -->
+
     <nav class="nav">
         <div class="nav-container">
-            <a href="index.html" onclick="closeMobileMenu()" class="nav-logo">Allen的小站</a>
+            <a href="/index.html" onclick="closeMobileMenu()" class="nav-logo">Allen的小站</a>
             <div class="nav-right">
                 <ul class="nav-links">
-                    <li><a href="about.html" onclick="closeMobileMenu()">About</a></li>
-                    <li><a href="writings.html" onclick="closeMobileMenu()">Writing</a></li>
-                    <li><a href="projects.html" onclick="closeMobileMenu()">Projects</a></li>
-                    <li><a href="reading.html" onclick="closeMobileMenu()">Reading</a></li>
-                    <li><a href="notes.html" onclick="closeMobileMenu()">Notes</a></li>
-                    <li><a href="fun.html" onclick="closeMobileMenu()">Fun</a></li>
+                    <li><a href="/about.html" onclick="closeMobileMenu()" >About</a></li>
+                    <li><a href="/writings.html" onclick="closeMobileMenu()">Writing</a></li>
+                    <li><a href="/projects.html" onclick="closeMobileMenu()">Projects</a></li>
+                    <li><a href="/reading.html" onclick="closeMobileMenu()">Reading</a></li>
+                    <li><a href="/notes.html" onclick="closeMobileMenu()">Notes</a></li>
+                    <li><a href="/fun.html" onclick="closeMobileMenu()">Fun</a></li>
                 </ul>
                 <div class="toggle-switch" onclick="toggleTheme()" title="切换主题">
                     <span class="toggle-icons">🌙</span>
                 </div>
-                <button class="mobile-menu-btn" onclick="openMobileMenu()">☰</button>
+                <button class="mobile-menu-btn" onclick="openMobileMenu()"><span>☰</span></button>
             </div>
         </div>
     </nav>
 
-    
-
-<main class="page">
+    <main class="page">
         <div class="container">
             <header class="page-header">
                 <h1>有趣的东西</h1>
@@ -362,34 +329,15 @@
     </footer>
 
     <script>
-        function showDetail(id) {
-            hideAll();
-            document.getElementById(id).classList.add('active');
-            document.getElementById(id).scrollIntoView({behavior: 'smooth'});
-        }
-        function hideAll() {
-            document.querySelectorAll('.fun-detail').forEach(el => {
-                el.classList.remove('active');
-            });
+        );
         }
     </script>
     <script src="js/main.js"></script>
-
-    <script src="js/main.js"></script>
-
     <script>
-    function toggleMobileMenu() {
-        var menu = document.getElementById("mobileMenu");
-        var overlay = document.getElementById("mobileOverlay");
-        if (menu.classList.contains("active")) {
-            menu.classList.remove("active");
-            overlay.classList.remove("active");
-        } else {
-            menu.classList.add("active");
-            overlay.classList.add("active");
-        }
+    );
     }
-
+    </script>
+    <script>
     function toggleTheme() {
         var html = document.documentElement;
         var currentTheme = html.getAttribute("data-theme");
@@ -398,18 +346,26 @@
         localStorage.setItem("theme", newTheme);
     }
     function openMobileMenu() {
-        document.getElementById("mobileOverlay").style.display = "block";
-        document.getElementById("mobileMenu").style.display = "block";
-        document.body.style.overflow = "hidden";
+        document.getElementById("mobileOverlay").classList.add("active");
+        document.getElementById("mobileMenu").classList.add("active");
     }
     function closeMobileMenu() {
-        document.getElementById("mobileOverlay").style.display = "none";
-        document.getElementById("mobileMenu").style.display = "none";
-        document.body.style.overflow = "";
+        var btn = document.querySelector(".mobile-toggle-btn");
+        if (btn) btn.classList.remove("active");
+        document.getElementById("mobileOverlay").classList.remove("active");
+        document.getElementById("mobileMenu").classList.remove("active");
+    }
+    function toggleMobileMenu() {
+        var menu = document.getElementById("mobileMenu");
+        var overlay = document.getElementById("mobileOverlay");
+        var btn = document.querySelector(".mobile-toggle-btn");
+        if (menu.classList.contains("active")) {
+            closeMobileMenu();
+        } else {
+            openMobileMenu();
+            if (btn) btn.classList.add("active");
+        }
     }
     </script>
-
 </body>
-</html>
-
 </html>

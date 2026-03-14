@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="zh-CN" data-theme="light">
 <head>
+        <script>
+    // Auto theme based on time of day (6:00-18:00 = light, else = dark)
+    var hour = new Date().getHours();
+    var timeBasedTheme = (hour >= 6 && hour < 18) ? 'light' : 'dark';
+    // Override with user preference if exists
+    var savedTheme = localStorage.getItem('theme');
+    var theme = savedTheme || timeBasedTheme;
+    document.documentElement.setAttribute('data-theme', theme);
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Allen的小站 | 探索无限</title>
@@ -10,7 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <button class="mobile-toggle-btn" onclick="toggleMobileMenu()">☰</button>
+    <button class="mobile-toggle-btn" onclick="toggleMobileMenu()"><span>☰</span></button>
     <!-- Mobile Overlay -->
     <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
     
@@ -21,25 +30,25 @@
             <span style="cursor:pointer;font-size:1.2rem;" onclick="closeMobileMenu()">✕</span>
         </div>
         <div class="mobile-menu-items">
-            <a href="index.html" onclick="closeMobileMenu()" class="mobile-menu-item">
+            <a href="/index.html" onclick="closeMobileMenu()" class="mobile-menu-item">
                 <span>🏠</span> 首页
             </a>
-            <a href="about.html" onclick="closeMobileMenu()" class="mobile-menu-item">
+            <a href="/about.html" onclick="closeMobileMenu()" class="mobile-menu-item">
                 <span>👤</span> 关于我
             </a>
-            <a href="writings.html" onclick="closeMobileMenu()" class="mobile-menu-item">
+            <a href="/writings.html" onclick="closeMobileMenu()" class="mobile-menu-item">
                 <span>✍️</span> Writing
             </a>
-            <a href="projects.html" onclick="closeMobileMenu()" class="mobile-menu-item">
+            <a href="/projects.html" onclick="closeMobileMenu()" class="mobile-menu-item">
                 <span>🛠️</span> Projects
             </a>
-            <a href="reading.html" onclick="closeMobileMenu()" class="mobile-menu-item">
+            <a href="/reading.html" onclick="closeMobileMenu()" class="mobile-menu-item">
                 <span>📚</span> Reading
             </a>
-            <a href="notes.html" onclick="closeMobileMenu()" class="mobile-menu-item">
+            <a href="/notes.html" onclick="closeMobileMenu()" class="mobile-menu-item">
                 <span>📝</span> Notes
             </a>
-            <a href="fun.html" onclick="closeMobileMenu()" class="mobile-menu-item">
+            <a href="/fun.html" onclick="closeMobileMenu()" class="mobile-menu-item">
                 <span>🎮</span> Fun
             </a>
         </div>
@@ -55,20 +64,20 @@
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
-            <a href="index.html" onclick="closeMobileMenu()" class="nav-logo">Allen的小站</a>
+            <a href="/index.html" onclick="closeMobileMenu()" class="nav-logo">Allen的小站</a>
             <div class="nav-right">
                 <ul class="nav-links">
-                    <li><a href="about.html" onclick="closeMobileMenu()">About</a></li>
-                    <li><a href="writings.html" onclick="closeMobileMenu()">Writing</a></li>
-                    <li><a href="projects.html" onclick="closeMobileMenu()">Projects</a></li>
-                    <li><a href="reading.html" onclick="closeMobileMenu()">Reading</a></li>
-                    <li><a href="notes.html" onclick="closeMobileMenu()">Notes</a></li>
-                    <li><a href="fun.html" onclick="closeMobileMenu()">Fun</a></li>
+                    <li><a href="/about.html" onclick="closeMobileMenu()">About</a></li>
+                    <li><a href="/writings.html" onclick="closeMobileMenu()">Writing</a></li>
+                    <li><a href="/projects.html" onclick="closeMobileMenu()">Projects</a></li>
+                    <li><a href="/reading.html" onclick="closeMobileMenu()">Reading</a></li>
+                    <li><a href="/notes.html" onclick="closeMobileMenu()">Notes</a></li>
+                    <li><a href="/fun.html" onclick="closeMobileMenu()">Fun</a></li>
                 </ul>
                 <div class="toggle-switch" onclick="toggleTheme()" title="切换主题">
                     <span class="toggle-icons">🌙</span>
                 </div>
-                <button class="mobile-menu-btn" onclick="openMobileMenu()">☰</button>
+                <button class="mobile-menu-btn" onclick="openMobileMenu()"><span>☰</span></button>
             </div>
         </div>
     </nav>
@@ -94,8 +103,8 @@
                 Building my digital garden on the internet.
             </p>
             <div class="hero-cta">
-                <a href="about.html" onclick="closeMobileMenu()" class="btn btn-primary">了解更多</a>
-                <a href="writings.html" onclick="closeMobileMenu()" class="btn btn-secondary">阅读思考</a>
+                <a href="/about.html" onclick="closeMobileMenu()" class="btn btn-primary">了解更多</a>
+                <a href="/writings.html" onclick="closeMobileMenu()" class="btn btn-secondary">阅读思考</a>
             </div>
         </div>
         <div class="hero-visual">
@@ -109,22 +118,22 @@
     <section class="section quick-links">
         <div class="container">
             <div class="links-grid">
-                <a href="writings.html" onclick="closeMobileMenu()" class="link-card">
+                <a href="/writings.html" onclick="closeMobileMenu()" class="link-card">
                     <span class="link-icon">✍️</span>
                     <h3>Writing</h3>
                     <p>思考与观察</p>
                 </a>
-                <a href="projects.html" onclick="closeMobileMenu()" class="link-card">
+                <a href="/projects.html" onclick="closeMobileMenu()" class="link-card">
                     <span class="link-icon">🛠️</span>
                     <h3>Projects</h3>
                     <p>我的作品</p>
                 </a>
-                <a href="reading.html" onclick="closeMobileMenu()" class="link-card">
+                <a href="/reading.html" onclick="closeMobileMenu()" class="link-card">
                     <span class="link-icon">📚</span>
                     <h3>Reading</h3>
                     <p>阅读书单</p>
                 </a>
-                <a href="notes.html" onclick="closeMobileMenu()" class="link-card">
+                <a href="/notes.html" onclick="closeMobileMenu()" class="link-card">
                     <span class="link-icon">📝</span>
                     <h3>Notes</h3>
                     <p>知识笔记</p>
@@ -143,49 +152,38 @@
         </div>
     </footer>
 
+    
+
     <script>
-        // Theme Toggle
-        function toggleMobileMenu() {
+    function toggleTheme() {
+        var html = document.documentElement;
+        var currentTheme = html.getAttribute("data-theme");
+        var newTheme = currentTheme === "dark" ? "light" : "dark";
+        html.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+    }
+    function openMobileMenu() {
+        document.getElementById("mobileOverlay").classList.add("active");
+        document.getElementById("mobileMenu").classList.add("active");
+    }
+    function closeMobileMenu() {
+        var btn = document.querySelector(".mobile-toggle-btn"); if (btn) btn.classList.remove("active");
+        var btn = document.querySelector(".mobile-toggle-btn");
+        if (btn) btn.classList.remove("active");
+        document.getElementById("mobileOverlay").classList.remove("active");
+        document.getElementById("mobileMenu").classList.remove("active");
+    }
+    function toggleMobileMenu() {
         var menu = document.getElementById("mobileMenu");
         var overlay = document.getElementById("mobileOverlay");
+        var btn = document.querySelector(".mobile-toggle-btn");
         if (menu.classList.contains("active")) {
-            menu.classList.remove("active");
-            overlay.classList.remove("active");
+            closeMobileMenu();
         } else {
-            menu.classList.add("active");
-            overlay.classList.add("active");
+            openMobileMenu();
+            if (btn) btn.classList.add("active");
         }
     }
-
-    function toggleTheme() {
-            const html = document.documentElement;
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-        }
-        
-        // Load saved theme
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        
-        // Mobile Menu
-        function openMobileMenu() {
-            document.getElementById('mobileOverlay').style.display = 'block';
-            document.getElementById('mobileMenu').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeMobileMenu() {
-            document.getElementById('mobileOverlay').style.display = 'none';
-            document.getElementById('mobileMenu').style.display = 'none';
-            document.body.style.overflow = '';
-        }
-        
-        // Tag click handler
-        function scrollToSection(section) {
-            alert('正在开发: ' + section + ' 相关内容');
-        }
     </script>
 </body>
 </html>

@@ -12,34 +12,17 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Writing - Allen Xu</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/page.css">
+    <title>更新日志 - Allen的小站</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/page.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
-    <script src="https://giscus.app/client.js"
-        data-repo="AllenXu233/allen-website"
-        data-repo-id="R_kgDORmEiPw"
-        data-category="General"
-        data-category-id="DIC_kwDORmEiP84C4TqR"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="zh-CN"
-        crossorigin="anonymous"
-        async>
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600" rel="stylesheet">
 </head>
 <body>
     <button class="mobile-toggle-btn" onclick="toggleMobileMenu()"><span>☰</span></button>
     
-    <!-- Mobile Overlay -->
     <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
-    <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-header">
             <span class="mobile-menu-title">菜单</span>
@@ -61,18 +44,17 @@
         </div>
     </div>
 
-
     <nav class="nav">
         <div class="nav-container">
-            <a href="/index.html" onclick="closeMobileMenu()" class="nav-logo">Allen的小站</a>
+            <a href="index.html" onclick="closeMobileMenu()" class="nav-logo">Allen的小站</a>
             <div class="nav-right">
                 <ul class="nav-links">
-                    <li><a href="/about.html" onclick="closeMobileMenu()" >About</a></li>
-                    <li><a href="/writings.html" onclick="closeMobileMenu()">Writing</a></li>
-                    <li><a href="/projects.html" onclick="closeMobileMenu()">Projects</a></li>
-                    <li><a href="/reading.html" onclick="closeMobileMenu()">Reading</a></li>
-                    <li><a href="/notes.html" onclick="closeMobileMenu()">Notes</a></li>
-                    <li><a href="/fun.html" onclick="closeMobileMenu()">Fun</a></li>
+                    <li><a href="about.html" onclick="closeMobileMenu()" class="active">About</a></li>
+                    <li><a href="writings.html" onclick="closeMobileMenu()">Writing</a></li>
+                    <li><a href="projects.html" onclick="closeMobileMenu()">Projects</a></li>
+                    <li><a href="reading.html" onclick="closeMobileMenu()">Reading</a></li>
+                    <li><a href="notes.html" onclick="closeMobileMenu()">Notes</a></li>
+                    <li><a href="fun.html" onclick="closeMobileMenu()">Fun</a></li>
                 </ul>
                 <div class="toggle-switch" onclick="toggleTheme()" title="切换主题">
                     <span class="toggle-icons">🌙</span>
@@ -85,60 +67,68 @@
     <main class="page">
         <div class="container">
             <header class="page-header">
-                <h1>思考与记录</h1>
-                <p class="page-subtitle">写下来，是思考最好的方式</p>
+                <div style="text-align:left;margin-bottom:1rem;"><a href="/notes.html" class="btn btn-secondary">← 返回笔记列表</a></div>
+                <h1>📝 更新日志</h1>
+                <p class="page-subtitle">网站每一次更新的记录</p>
             </header>
 
             <div class="content">
-                <div class="writing-list">
-                    <a href="writings/f1-bahrain-saudi-cancelled.html" class="writing-item">
-                        <h3>🏎️ F1巴林站和沙特站将被取消</h3>
-                        <div class="writing-meta">F1新闻 · 2026/03/14</div>
-                        <p>据天空体育消息，F1巴林站和沙特站将被取消。物资转运需要提前三周完成，意味着至少要提前一个月决定是否能办比赛。</p>
-                        <div class="writing-tags">
-                            <span class="writing-tag">F1</span>
-                            <span class="writing-tag">赛车</span>
-                            <span class="writing-tag">新闻</span>
-                        </div>
-                    </a>
-
-                    <a href="writings/lijiang-voice-2026-03.html" class="writing-item">
-                        <h3>📖 【转载测试】EarthMC服务器漓江之声 2026.3</h3>
-                        <div class="writing-meta">EarthMC · 2026/03/14</div>
-                        <p>EarthMC中国区综合刊物，包含九州评论、明史纲要、玩家留存分析等精彩内容。投稿可获稿费！</p>
-                        <div class="writing-tags">
-                            <span class="writing-tag">EarthMC</span>
-                            <span class="writing-tag">漓江之声</span>
-                            <span class="writing-tag">杂志</span>
-                        </div>
-                    </a>
-
-                    <a href="writings/nasdaq-2026-03-13.html" class="writing-item">
-                        <h3>📈 纳指每日分析（2026/03/13）</h3>
-                        <div class="writing-meta">投资分析 · 2026/03/13</div>
-                        <p>今日核心数据：QQQ-$597.26(-1.72%), VIX-27.07(+11.68%), 恐惧贪婪指数-21(极度恐惧), PE-33.39。全面分析新闻、市场数据、情绪、技术面及机构观点。</p>
-                        <div class="writing-tags">
-                            <span class="writing-tag">纳斯达克</span>
-                            <span class="writing-tag">QQQ</span>
-                            <span class="writing-tag">VIX</span>
-                            <span class="writing-tag">投资策略</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Giscus Comments -->
-                <div class="giscus-container" style="margin-top: 3rem;">
-                    <div class="giscus"></div>
-                </div>
-
-                <div class="section-block" style="margin-top: 2rem;">
-                    <blockquote class="quote">
-                        <p>「写作是把网状的思考，变成线性的文字。」</p>
-                    </blockquote>
+                <div class="article-content">
+                    <h2>2026/03/14</h2>
+                    
+                    <h3>🌙 深色/浅色模式</h3>
+                    <ul>
+                        <li>新增深色/浅色模式切换 Toggle 开关</li>
+                        <li>电脑版：导航栏右侧 Toggle 按钮</li>
+                        <li>手机版：左上角圆形菜单按钮，菜单内含 Toggle</li>
+                        <li>主题自动记忆，切换页面保持一致</li>
+                    </ul>
+                    
+                    <h3>📱 手机端优化</h3>
+                    <ul>
+                        <li>隐藏顶部大导航栏，只保留菜单按钮</li>
+                        <li>菜单加丝滑动画效果</li>
+                        <li>点击链接后菜单自动关闭</li>
+                        <li>当前页面高亮显示</li>
+                    </ul>
+                    
+                    <h3>🏷️ 首页特质</h3>
+                    <ul>
+                        <li>标题改为"Allen的小站"</li>
+                        <li>特质改为：航空、F1、极客、古典音乐、游戏、动漫、数据可视化、金融</li>
+                        <li>每个特质可点击，有悬停毛玻璃效果</li>
+                    </ul>
+                    
+                    <h3>📰 Writing 页面</h3>
+                    <ul>
+                        <li>新增纳指每日分析报告（2026/03/13）</li>
+                        <li>新增《漓江之声》EarthMC杂志</li>
+                        <li>新增 F1 新闻</li>
+                        <li>所有文章日期格式统一为 YYYY/MM/DD</li>
+                    </ul>
+                    
+                    <h3>💬 其他更新</h3>
+                    <ul>
+                        <li>网站上线：allenxu233.eu.org</li>
+                        <li>集成 Giscus 评论系统</li>
+                        <li>添加 Live 2D 初音未来看板娘</li>
+                    </ul>
+                    
+                    <h3>⚙️ 技术配置</h3>
+                    <ul>
+                        <li>托管：GitHub Pages</li>
+                        <li>域名：allenxu233.eu.org</li>
+                        <li>CDN：Cloudflare</li>
+                    </ul>
+                    
+                    <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+                    
                     <p style="text-align: center; color: var(--text-muted);">
-                        持续更新中... <a href="#" style="color: var(--accent);">订阅 RSS</a>
+                        更多更新敬请期待...
                     </p>
                 </div>
+
+                
             </div>
         </div>
     </main>
@@ -149,7 +139,6 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
     <script>
     function toggleTheme() {
         var html = document.documentElement;

@@ -1,6 +1,15 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="light">
 <head>
+        <script>
+    // Auto theme based on time of day (6:00-18:00 = light, else = dark)
+    var hour = new Date().getHours();
+    var timeBasedTheme = (hour >= 6 && hour < 18) ? 'light' : 'dark';
+    // Override with user preference if exists
+    var savedTheme = localStorage.getItem('theme');
+    var theme = savedTheme || timeBasedTheme;
+    document.documentElement.setAttribute('data-theme', theme);
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>【转载测试】EarthMC服务器漓江之声 2026.3 - Allen Xu</title>
@@ -120,23 +129,56 @@
     </style>
 </head>
 <body>
+    <button class="mobile-toggle-btn" onclick="toggleMobileMenu()"><span>☰</span></button>
+    
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <span class="mobile-menu-title">菜单</span>
+            <span style="cursor:pointer;font-size:1.2rem;" onclick="closeMobileMenu()">×</span>
+        </div>
+        <div class="mobile-menu-items">
+            <a href="/index.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>🏠</span> 首页</a>
+            <a href="/about.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>👤</span> 关于我</a>
+            <a href="/writings.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>✍️</span> Writing</a>
+            <a href="/projects.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>🛠️</span> Projects</a>
+            <a href="/reading.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>📚</span> Reading</a>
+            <a href="/notes.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>📝</span> Notes</a>
+            <a href="/fun.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>🎮</span> Fun</a>
+        </div>
+        <div class="mobile-menu-divider"></div>
+        <div class="mobile-theme-toggle">
+            <span class="mobile-theme-label">🌙 夜间模式</span>
+            <div class="toggle-switch" onclick="toggleTheme()"><span class="toggle-icons">🌙</span></div>
+        </div>
+    </div>
+
+
     <nav class="nav">
         <div class="nav-container">
-            <a href="../index.html" class="nav-logo">Allen Xu</a>
-            <ul class="nav-links">
-                <li><a href="../about.html">About</a></li>
-                <li><a href="../writings.html">Writing</a></li>
-                <li><a href="../projects.html">Projects</a></li>
-                <li><a href="../reading.html">Reading</a></li>
-                <li><a href="../notes.html">Notes</a></li>
-                <li><a href="../fun.html">Fun</a></li>
-            </ul>
+            <a href="/index.html" onclick="closeMobileMenu()" class="nav-logo" href="/index.html">Allen的小站</a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="/about.html" onclick="closeMobileMenu()" class="active">About</a></li>
+                    <li><a href="/writings.html" onclick="closeMobileMenu()">Writing</a></li>
+                    <li><a href="/projects.html" onclick="closeMobileMenu()">Projects</a></li>
+                    <li><a href="/reading.html" onclick="closeMobileMenu()">Reading</a></li>
+                    <li><a href="/notes.html" onclick="closeMobileMenu()">Notes</a></li>
+                    <li><a href="/fun.html" onclick="closeMobileMenu()">Fun</a></li>
+                </ul>
+                <div class="toggle-switch" onclick="toggleTheme()" title="切换主题">
+                    <span class="toggle-icons">🌙</span>
+                </div>
+                <button class="mobile-menu-btn" onclick="openMobileMenu()"><span>☰</span></button>
+            </div>
         </div>
     </nav>
 
     <main class="page">
         <div class="container">
-            <header class="page-header">
+            <header class="page-header"><div style="text-align:left;margin-bottom:1rem;"><a href="/writings.html" class="btn btn-secondary">← 返回文章列表</a></div>
                 <h1>📖 【转载测试】EarthMC服务器漓江之声 2026.3</h1>
                 <p class="page-subtitle">EarthMC 中国区综合刊物 — 作者：桂林_Plumme</p>
             </header>
@@ -239,10 +281,7 @@
                         <p><strong>投稿地点：</strong>苏州图书馆、包头市桂林人民政府一楼、岳阳/包头/厦门/云南/大连/敦煌/新广州/南京新华书店</p>
                     </div>
 
-                    <div style="text-align: center; margin-top: 2rem;">
-                        <p>往期精华下载：<a href="https://wwaqz.lanzout.com/b01883rbvg" target="_blank" style="color: var(--accent);">点击下载</a> (密码: aaaa)</p>
-                        <a href="../writings.html" class="btn btn-secondary" style="margin-top: 1rem;">← 返回文章列表</a>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -255,5 +294,35 @@
     </footer>
 
     <script src="../js/main.js"></script>
+    <script>
+    function toggleTheme() {
+        var html = document.documentElement;
+        var currentTheme = html.getAttribute("data-theme");
+        var newTheme = currentTheme === "dark" ? "light" : "dark";
+        html.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+    }
+    function openMobileMenu() {
+        document.getElementById("mobileOverlay").classList.add("active");
+        document.getElementById("mobileMenu").classList.add("active");
+    }
+    function closeMobileMenu() {
+        var btn = document.querySelector(".mobile-toggle-btn");
+        if (btn) btn.classList.remove("active");
+        document.getElementById("mobileOverlay").classList.remove("active");
+        document.getElementById("mobileMenu").classList.remove("active");
+    }
+    function toggleMobileMenu() {
+        var menu = document.getElementById("mobileMenu");
+        var overlay = document.getElementById("mobileOverlay");
+        var btn = document.querySelector(".mobile-toggle-btn");
+        if (menu.classList.contains("active")) {
+            closeMobileMenu();
+        } else {
+            openMobileMenu();
+            if (btn) btn.classList.add("active");
+        }
+    }
+    </script>
 </body>
 </html>
