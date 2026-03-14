@@ -56,7 +56,7 @@ ul { list-style: none; }
     right: 0;
     z-index: 1000;
     padding: 1rem 0;
-    background: var(--nav-bg);
+    background: var(--bg-primary);
     backdrop-filter: var(--nav-blur);
     -webkit-backdrop-filter: var(--nav-blur);
     border-bottom: 1px solid var(--border);
