@@ -3,105 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - Allen Xu</title>
+    <title>Allen的小站 | 探索无限</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/page.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <span class="mobile-menu-title">菜单</span>
+            <span style="cursor:pointer;font-size:1.2rem;" onclick="closeMobileMenu()">✕</span>
+        </div>
+        <div class="mobile-menu-items">
+            <a href="index.html" class="mobile-menu-item active">
+                <span>🏠</span> 首页
+            </a>
+            <a href="about.html" class="mobile-menu-item">
+                <span>👤</span> 关于我
+            </a>
+            <a href="writings.html" class="mobile-menu-item">
+                <span>✍️</span> Writing
+            </a>
+            <a href="projects.html" class="mobile-menu-item">
+                <span>🛠️</span> Projects
+            </a>
+            <a href="reading.html" class="mobile-menu-item">
+                <span>📚</span> Reading
+            </a>
+            <a href="notes.html" class="mobile-menu-item">
+                <span>📝</span> Notes
+            </a>
+            <a href="fun.html" class="mobile-menu-item">
+                <span>🎮</span> Fun
+            </a>
+        </div>
+        <div class="mobile-menu-divider"></div>
+        <div class="mobile-theme-toggle">
+            <span class="mobile-theme-label">🌙 夜间模式</span>
+            <div class="toggle-switch" onclick="toggleTheme()">
+                <span class="toggle-icons">🌙</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">Allen的小站</a>
-            <div style="display: flex; align-items: center;">
-                <button class="theme-toggle" onclick="toggleTheme()" title="切换主题"><span class="theme-icon">🌙</span></button>
-                <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="writings.html">Writing</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="reading.html">Reading</a></li>
+                    <li><a href="notes.html">Notes</a></li>
+                    <li><a href="fun.html">Fun</a></li>
+                </ul>
+                <div class="toggle-switch" onclick="toggleTheme()" title="切换主题">
+                    <span class="toggle-icons">🌙</span>
+                </div>
+                <button class="mobile-menu-btn" onclick="openMobileMenu()">☰</button>
             </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="about.html">About</a></li>
-                <li><a href="writings.html">Writing</a></li>
-                <li><a href="projects.html" class="active">Projects</a></li>
-                <li><a href="reading.html">Reading</a></li>
-                <li><a href="notes.html">Notes</a></li>
-                <li><a href="fun.html">Fun</a></li>
-            </ul>
         </div>
     </nav>
 
-    <main class="page">
-        <div class="container">
-            <header class="page-header">
-                <h1>我的项目</h1>
-                <p class="page-subtitle">小项目，大思考</p>
-            </header>
-
-            <div class="content">
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-icon">🤖</div>
-                        <h3>OpenClaw AI 助手</h3>
-                        <p>基于 OpenClaw 的 AI 助手，可以自动查资料、生成报告，管理任务。</p>
-                        <span class="project-status">进行中</span>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-icon">🌐</div>
-                        <h3>个人网站</h3>
-                        <p>就是你现在看到的这个网站！用 HTML/CSS/JS 从零搭建。</p>
-                        <span class="project-status">进行中</span>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-icon">📝</div>
-                        <h3>纳斯达克分析机器人</h3>
-                        <p>每天自动获取美股数据，生成纳斯达克指数分析报告。</p>
-                        <span class="project-status">已完成</span>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-icon">🏗️</div>
-                        <h3>EarthMC 服务器</h3>
-                        <p>在 Minecraft EarthMC 服务器参与包头市城市建设项目</p>
-                        <span class="project-status">进行中</span>
-                    </div>
-                </div>
-
-                <div class="section-block" style="margin-top: 3rem;">
-                    <blockquote class="quote">
-                        <p>「项目不在大小，在于你是否在思考中成长。」</p>
-                    </blockquote>
-                </div>
+    <!-- Hero Section -->
+    <main class="hero">
+        <div class="hero-content">
+            <p class="hero-label">Hi, I'm</p>
+            <h1 class="hero-name">Allen Xu</h1>
+            <p class="hero-intro">你所热爱的，就是你的生活</p>
+            <p class="hero-tags">
+                <span class="tag" onclick="scrollToSection('aviation')">航空</span>
+                <span class="tag" onclick="scrollToSection('f1')">F1</span>
+                <span class="tag" onclick="scrollToSection('geek')">极客</span>
+                <span class="tag" onclick="scrollToSection('music')">古典音乐</span>
+                <span class="tag" onclick="scrollToSection('game')">游戏</span>
+                <span class="tag" onclick="scrollToSection('anime')">动漫</span>
+                <span class="tag" onclick="scrollToSection('data')">数据可视化</span>
+                <span class="tag" onclick="scrollToSection('finance')">金融</span>
+            </p>
+            <p class="hero-desc">
+                正在探索技术与思想如何塑造未来。<br>
+                Building my digital garden on the internet.
+            </p>
+            <div class="hero-cta">
+                <a href="about.html" class="btn btn-primary">了解更多</a>
+                <a href="writings.html" class="btn btn-secondary">阅读思考</a>
             </div>
         </div>
+        <div class="hero-visual">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
     </main>
+
+    <!-- Quick Links -->
+    <section class="section quick-links">
+        <div class="container">
+            <div class="links-grid">
+                <a href="writings.html" class="link-card">
+                    <span class="link-icon">✍️</span>
+                    <h3>Writing</h3>
+                    <p>思考与观察</p>
+                </a>
+                <a href="projects.html" class="link-card">
+                    <span class="link-icon">🛠️</span>
+                    <h3>Projects</h3>
+                    <p>我的作品</p>
+                </a>
+                <a href="reading.html" class="link-card">
+                    <span class="link-icon">📚</span>
+                    <h3>Reading</h3>
+                    <p>阅读书单</p>
+                </a>
+                <a href="notes.html" class="link-card">
+                    <span class="link-icon">📝</span>
+                    <h3>Notes</h3>
+                    <p>知识笔记</p>
+                </a>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="container">
             <p>© Allen Xu · All thoughts are mine.</p>
+            <div class="footer-links">
+                <a href="https://github.com/AllenXu233" target="_blank">GitHub</a>
+                <a href="mailto:allen@allenxu233.eu.org">Email</a>
+            </div>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
-
     <script>
-    function toggleTheme() {
-        const h = document.documentElement;
-        const t = h.getAttribute("data-theme") === "dark" ? "light" : "dark";
-        h.setAttribute("data-theme", t);
-        localStorage.setItem("theme", t);
-        const icon = document.querySelector(".theme-icon");
-        if(icon) icon.textContent = t === "dark" ? "☀️" : "🌙";
-    }
-    function toggleMenu() {
-        const nav = document.getElementById("navLinks");
-        if(nav) nav.classList.toggle("active");
-    }
-    const savedTheme = localStorage.getItem("theme") || "light";
-    document.documentElement.setAttribute("data-theme", savedTheme);
-    const icon = document.querySelector(".theme-icon");
-    if(icon) icon.textContent = savedTheme === "dark" ? "☀️" : "🌙";
+        // Theme Toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        
+        // Mobile Menu
+        function openMobileMenu() {
+            document.getElementById('mobileOverlay').style.display = 'block';
+            document.getElementById('mobileMenu').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeMobileMenu() {
+            document.getElementById('mobileOverlay').style.display = 'none';
+            document.getElementById('mobileMenu').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        
+        // Tag click handler
+        function scrollToSection(section) {
+            alert('正在开发: ' + section + ' 相关内容');
+        }
     </script>
-
 </body>
 </html>
