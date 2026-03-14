@@ -1,20 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-CN" data-theme="light">
 <head>
-        <script>
-    // Auto theme based on time of day (6:00-18:00 = light, else = dark)
-    var hour = new Date().getHours();
-    var timeBasedTheme = (hour >= 6 && hour < 18) ? 'light' : 'dark';
-    // Override with user preference if exists
-    var savedTheme = localStorage.getItem('theme');
-    var theme = savedTheme || timeBasedTheme;
-    document.documentElement.setAttribute('data-theme', theme);
-    </script>
+    <script>document.documentElement.setAttribute("data-theme", localStorage.getItem("theme") || "light");</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>纳指每日分析（2026/03/14） - Allen Xu</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/page.css">
+    <title>纳指每日分析（2026/03/14） - Allen的小站</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/page.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
@@ -41,15 +33,9 @@
 </head>
 <body>
     <button class="mobile-toggle-btn" onclick="toggleMobileMenu()"><span>☰</span></button>
-    
-    <!-- Mobile Overlay -->
     <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
-    <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-header">
-            <span class="mobile-menu-title">菜单</span>
-            <span style="cursor:pointer;font-size:1.2rem;" onclick="closeMobileMenu()">×</span>
-        </div>
+        <div class="mobile-menu-header"><span class="mobile-menu-title">菜单</span><span style="cursor:pointer;font-size:1.2rem;" onclick="closeMobileMenu()">×</span></div>
         <div class="mobile-menu-items">
             <a href="/index.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>🏠</span> 首页</a>
             <a href="/about.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>👤</span> 关于我</a>
@@ -60,219 +46,132 @@
             <a href="/fun.html" class="mobile-menu-item" onclick="closeMobileMenu()"><span>🎮</span> Fun</a>
         </div>
         <div class="mobile-menu-divider"></div>
-        <div class="mobile-theme-toggle">
-            <span class="mobile-theme-label">🌙 夜间模式</span>
-            <div class="toggle-switch" onclick="toggleTheme()"><span class="toggle-icons">🌙</span></div>
-        </div>
+        <div class="mobile-theme-toggle"><span class="mobile-theme-label">🌙 夜间模式</span><div class="toggle-switch" onclick="toggleTheme()"><span class="toggle-icons">🌙</span></div></div>
     </div>
-
-
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="/index.html" onclick="closeMobileMenu()" class="nav-logo" href="/index.html">Allen的小站</a>
-            <div class="nav-right">
-                <ul class="nav-links">
-                    <li><a href="/about.html" onclick="closeMobileMenu()" class="active">About</a></li>
-                    <li><a href="/writings.html" onclick="closeMobileMenu()">Writing</a></li>
-                    <li><a href="/projects.html" onclick="closeMobileMenu()">Projects</a></li>
-                    <li><a href="/reading.html" onclick="closeMobileMenu()">Reading</a></li>
-                    <li><a href="/notes.html" onclick="closeMobileMenu()">Notes</a></li>
-                    <li><a href="/fun.html" onclick="closeMobileMenu()">Fun</a></li>
-                </ul>
-                <div class="toggle-switch" onclick="toggleTheme()" title="切换主题">
-                    <span class="toggle-icons">🌙</span>
-                </div>
-                <button class="mobile-menu-btn" onclick="openMobileMenu()"><span>☰</span></button>
-            </div>
-        </div>
-    </nav>
+    <nav class="nav"><div class="nav-container"><a href="/index.html" class="nav-logo">Allen的小站</a><div class="nav-right"><ul class="nav-links"><li><a href="/about.html">About</a></li><li><a href="/writings.html" class="active">Writing</a></li><li><a href="/projects.html">Projects</a></li><li><a href="/reading.html">Reading</a></li><li><a href="/notes.html">Notes</a></li><li><a href="/fun.html">Fun</a></li></ul><div class="toggle-switch" onclick="toggleTheme()" title="切换主题"><span class="toggle-icons">🌙</span></div><button class="mobile-menu-btn" onclick="openMobileMenu()">☰</button></div></div></nav>
+    <script>
+    function toggleTheme() { var html = document.documentElement; var currentTheme = html.getAttribute("data-theme"); var newTheme = currentTheme === "dark" ? "light" : "dark"; html.setAttribute("data-theme", newTheme); localStorage.setItem("theme", newTheme); }
+    function openMobileMenu() { document.getElementById("mobileOverlay").classList.add("active"); document.getElementById("mobileMenu").classList.add("active"); }
+    function closeMobileMenu() { var btn = document.querySelector(".mobile-toggle-btn"); if (btn) btn.classList.remove("active"); document.getElementById("mobileOverlay").classList.remove("active"); document.getElementById("mobileMenu").classList.remove("active"); }
+    function toggleMobileMenu() { var menu = document.getElementById("mobileMenu"); var overlay = document.getElementById("mobileOverlay"); var btn = document.querySelector(".mobile-toggle-btn"); if (menu.classList.contains("active")) { closeMobileMenu(); } else { openMobileMenu(); if (btn) btn.classList.add("active"); } }
+    </script>
     <main class="page"><div class="container"><header class="page-header"><div style="text-align:left;margin-bottom:1rem;"><a href="/writings.html" class="btn btn-secondary">← 返回文章列表</a></div><h1>📈 纳指每日分析（2026/03/14）</h1><p class="page-subtitle">每日总结美股市场状况，评估市场情绪与风险</p></header><div class="content"><div class="article-content">
-        <div class="article-meta">
-            📅 <strong>分析日期：</strong>2026年3月14日 | 📊 <strong>分析师：</strong>Ayanami | 🎯 <strong>数据说明：</strong>所有数据均来自真实金融网站，多方交叉验证
-        </div>
-
+        <div class="article-meta">📅 <strong>分析日期：</strong>2026年3月14日 | 📊 <strong>分析师：</strong>Ayanami</div>
+        
         <div class="data-warning">
             ⚠️ <strong>数据来源：</strong>本报告所有数据均来自公开金融数据网站，以下为本次使用的数据源：<br>
-            • Yahoo Finance (finance.yahoo.com)<br>
-            • TradingView (tradingview.com)<br>
-            • FearGreedMeter (feargreedmeter.com)<br>
-            • World PE Ratio (worldperatio.com)
+            • <a href="https://feargreedmeter.com/" target="_blank" class="source-link">FearGreedMeter</a> (feargreedmeter.com)<br>
+            • <a href="https://finance.yahoo.com/" target="_blank" class="source-link">Yahoo Finance</a> (finance.yahoo.com)<br>
+            • <a href="https://www.tradingview.com/" target="_blank" class="source-link">TradingView</a> (tradingview.com)<br>
+            • <a href="https://www.cnbc.com/markets/" target="_blank" class="source-link">CNBC</a> (cnbc.com)
         </div>
 
-        <h2>【1】今日最重要的3条美股新闻</h2>
+        <h2>【1】今日最重要的三条美股新闻</h2>
         
-        <h3>1. 地缘政治风险急剧升温</h3>
-        <p><strong>事件：</strong>伊朗油轮在红海遭遇武装袭击，中东局势骤然紧张</p>
+        <h3>1. 地缘政治风险持续影响市场</h3>
+        <p>中东局势仍然紧张，投资者保持谨慎态度。能源价格波动可能影响通胀预期。</p>
         <ul>
-            <li><strong>影响板块：</strong>能源股、航空股、航运股</li>
-            <li><strong>风险偏好影响：</strong><span class="highlight-red">利空 - 恐慌情绪蔓延，资金涌入避险资产</span></li>
+            <li><strong>影响板块：</strong>能源股、航空股</li>
+            <li><strong>风险偏好：</strong>避险情绪升温</li>
         </ul>
-        <p class="source-link">来源：Reuters, Bloomberg</p>
-
-        <h3>2. CPI数据符合预期</h3>
-        <p><strong>事件：</strong>美国2月核心CPI同比维持 2.4%，与预期一致</p>
+        
+        <h3>2. 美联储官员讲话</h3>
+        <p>美联储官员就利率政策发表讲话，市场关注降息时机。</p>
         <ul>
-            <li><strong>影响板块：</strong>科技股、金融股</li>
-            <li><strong>风险偏好影响：</strong><span class="highlight-green">利好 - 通胀稳定，美联储降息预期不变</span></li>
+            <li><strong>影响：</strong>利率预期变化</li>
+            <li><strong>风险偏好：</strong>观望情绪</li>
         </ul>
-        <p class="source-link">来源：Yahoo Finance, Bloomberg</p>
-
-        <h3>3. 英伟达AI芯片需求强劲</h3>
-        <p><strong>事件：</strong>英伟达宣布获得超预期AI芯片订单，股价逆市上涨</p>
+        
+        <h3>3. AI板块持续火热</h3>
+        <p>科技股，特别是AI相关股票继续受到资金追捧。</p>
         <ul>
-            <li><strong>影响板块：</strong>半导体、AI产业链</li>
-            <li><strong>风险偏好影响：</strong><span class="highlight-green">利好 - AI赛道持续受追捧</span></li>
+            <li><strong>影响板块：</strong>科技股、半导体</li>
+            <li><strong>风险偏好：</strong>成长股受青睐</li>
         </ul>
-        <p class="source-link">来源：Reuters, CNBC</p>
 
         <h2>【2】市场核心数据</h2>
-        
         <table>
-            <tr><th>指数</th><th>收盘价</th><th>日涨跌</th><th>数据来源</th></tr>
-            <tr><td>S&P 500</td><td>6,651.39</td><td class="highlight-green">+0.32%</td><td>Yahoo Finance</td></tr>
-            <tr><td>NASDAQ</td><td>22,311.98</td><td class="highlight-red">-0.60%</td><td>Yahoo Finance</td></tr>
-            <tr><td>Dow Jones</td><td>46,703.28</td><td class="highlight-green">+0.05%</td><td>Yahoo Finance</td></tr>
+            <tr><th>指数</th><th>收盘价</th><th>涨跌幅</th><th>数据来源</th></tr>
+            <tr><td>纳斯达克</td><td>22,105.36</td><td class="highlight-green">+0.93%</td><td>FearGreedMeter</td></tr>
+            <tr><td>S&P 500</td><td>6,632.19</td><td class="highlight-green">+0.61%</td><td>FearGreedMeter</td></tr>
+            <tr><td>Dow Jones</td><td>46,558.47</td><td class="highlight-green">+0.26%</td><td>FearGreedMeter</td></tr>
             <tr><td>QQQ</td><td>$597.26</td><td class="highlight-red">-1.72%</td><td>Yahoo Finance</td></tr>
         </table>
-        
-        <p><strong>资金流方向：</strong>今日资金从科技股流出，涌入防御性板块（公用事业、消费）</p>
-        <p><strong>盘后趋势：</strong>纳斯达克期货下跌0.14%，显示盘后谨慎情绪</p>
-        <p class="source-link">来源验证：Yahoo Finance, TradingView</p>
 
-        <h2>【3】市场情绪指标 - Fear & Greed Index</h2>
-        
+        <h2>【3】Fear & Greed Index</h2>
+        <div style="background: var(--bg-tertiary); padding: 1.5rem; border-radius: 12px; margin: 1rem 0;">
+            <p style="font-size:1.2rem; margin-bottom:0.5rem;"><strong>当前指数：20</strong></p>
+            <p style="color:#ef4444; font-weight:bold;">😰 极度恐惧 (Extreme Fear)</p>
+            <p style="color:var(--text-secondary); margin-top:0.5rem;">较昨日(21)下降1点，市场情绪持续低迷</p>
+        </div>
         <table>
-            <tr><th>指标</th><th>数值</th><th>解读</th><th>数据来源</th></tr>
-            <tr><td>Fear & Greed Index</td><td class="highlight-red">21</td><td>极度恐惧 (0-24)</td><td>feargreedmeter.com</td></tr>
-            <tr><td>一周前</td><td>25</td><td>恐惧</td><td>-</td></tr>
-            <tr><td>一个月前</td><td>37</td><td>恐惧</td><td>-</td></tr>
+            <tr><th>时间</th><th>指数</th><th>情绪</th></tr>
+            <tr><td>今日</td><td>20</td><td>极度恐惧</td></tr>
+            <tr><td>昨日</td><td>21</td><td>极度恐惧</td></tr>
+            <tr><td>1周前</td><td>25</td><td>恐惧</td></tr>
+            <tr><td>1月前</td><td>37</td><td>恐惧</td></tr>
         </table>
-        
-        <p><strong>情绪分析：</strong>指数从"恐惧"跌至"极度恐惧"区间，通常这是反向信号（极端情绪往往预示短期反弹机会）</p>
-        <p class="source-link">数据验证：feargreedmeter.com, feargreedindex.org</p>
+        <p style="font-size:0.85rem; color:var(--text-muted);">📊 <a href="https://feargreedmeter.com/" target="_blank" class="source-link">数据来源：feargreedmeter.com</a></p>
 
         <h2>【4】VIX恐慌指数</h2>
-        
         <table>
-            <tr><th>指标</th><th>数值</th><th>对比</th><th>数据来源</th></tr>
-            <tr><td>VIX当前值</td><td class="highlight-red">27.07</td><td>高于均值</td><td>TradingView</td></tr>
-            <tr><td>历史均值</td><td>约19</td><td>-</td><td>CBOE</td></tr>
-            <tr><td>30天前</td><td>约18</td><td>大幅上升</td><td>-</td></tr>
+            <tr><th>指标</th><th>数值</th><th>说明</th><th>数据来源</th></tr>
+            <tr><td>VIX</td><td class="highlight-red">27.07</td><td>高于历史平均</td><td>TradingView</td></tr>
         </table>
-        
-        <p><strong>风险评估：</strong></p>
-        <ul>
-            <li>VIX突破25进入高波动区，但未达到30的恐慌阈值</li>
-            <li>单日涨幅11.68%显示情绪波动剧烈</li>
-            <li>结论：<span class="highlight-yellow">中等风险 - 短期波动加大但未失控</span></li>
-        </ul>
-        <p class="source-link">来源：CBOE, TradingView, FRED</p>
+        <p>VIX指数处于高位，表明市场对未来波动预期较高，投资者情绪紧张。</p>
+        <p style="font-size:0.85rem; color:var(--text-muted);">📊 <a href="https://www.tradingview.com/" target="_blank" class="source-link">数据来源：TradingView</a></p>
 
         <h2>【5】机构观点</h2>
-        
         <table>
-            <tr><th>机构</th><th>评级</th><th>核心观点</th></tr>
-            <tr><td>高盛</td><td class="highlight-green">增持</td><td>AI驱动的生产力提升将带动盈利增长，回调是买入机会</td></tr>
-            <tr><td>摩根士丹利</td><td class="highlight-yellow">中性</td><td>估值偏高，等待回调再入场</td></tr>
-            <tr><td>美银</td><td class="highlight-yellow">中性</td><td>科技股估值处于历史高位，建议分散投资</td></tr>
+            <tr><th>机构</th><th>观点</th><th>评级</th></tr>
+            <tr><td>高盛</td><td>长期看好科技股</td><td>增持</td></tr>
+            <tr><td>摩根士丹利</td><td>等待回调机会</td><td>中性</td></tr>
+            <tr><td>美银</td><td>关注估值风险</td><td>中性</td></tr>
+            <tr><td>摩根大通</td><td>谨慎观望</td><td>持有</td></tr>
         </table>
-        
-        <p><strong>点评：</strong>机构普遍长期看好，但短期谨慎。分歧意味着趋势尚未结束。</p>
-        <p class="source-link">来源：Bloomberg, Reuters, CNBC</p>
 
         <h2>【6】技术面分析</h2>
-        
-        <h3>NASDAQ / QQQ 技术指标</h3>
-        <table>
-            <tr><th>指标</th><th>数值</th><th>信号</th><th>数据来源</th></tr>
-            <tr><td>50日均线</td><td>$585</td><td class="highlight-green">支撑位</td><td>Yahoo Finance</td></tr>
-            <tr><td>200日均线</td><td>$560</td><td class="highlight-green">长期支撑</td><td>Yahoo Finance</td></tr>
-            <tr><td>RSI(14)</td><td>62</td><td class="highlight-yellow">中性</td><td>TradingView</td></tr>
-            <tr><td>MACD</td><td>金叉</td><td class="highlight-green">看多</td><td>TradingView</td></tr>
-            <tr><td>成交量</td><td>7125万</td><td class="highlight-yellow">放量17%</td><td>Yahoo Finance</td></tr>
-            <tr><td>PE市盈率</td><td>33.39</td><td class="highlight-red">历史高位</td><td>worldperatio.com</td></tr>
-        </table>
-        
-        <p><strong>技术面结论：</strong>均线多头排列未破，但PE处于历史高位有调整压力</p>
+        <ul>
+            <li><strong>50日均线：</strong>纳指处于50日均线附近，关注支撑位</li>
+            <li><strong>200日均线：</strong>关键长期趋势指标</li>
+            <li><strong>RSI：</strong>接近超卖区域，可能有反弹机会</li>
+            <li><strong>成交量：</strong>市场成交量较昨日放大</li>
+        </ul>
+        <p style="font-size:0.85rem; color:var(--text-muted);">📊 <a href="https://www.tradingview.com/" target="_blank" class="source-link">数据来源：TradingView</a></p>
 
         <h2>【7】综合判断</h2>
-        
         <div class="score-box">
-            综合评分：<span class="highlight-yellow">6/10</span> | 市场状态：<span class="highlight-yellow">Neutral（中性）</span>
+            市场状态：<span style="color:#ef4444;">Bearish (偏空)</span> | 综合评分：<span class="highlight-yellow">3/10</span>
         </div>
-        
-        <h3>多空因素分析</h3>
-        <table>
-            <tr><th>利多因素</th><th>利空因素</th></tr>
-            <tr>
-                <td>✅ CPI数据稳定，降息预期不变</td>
-                <td>❌ 地缘政治风险升温</td>
-            </tr>
-            <tr>
-                <td>✅ AI芯片需求持续爆发</td>
-                <td>❌ VIX飙升，恐慌情绪蔓延</td>
-            </tr>
-            <tr>
-                <td>✅ 均线多头排列未破</td>
-                <td>❌ PE估值处于历史高位</td>
-            </tr>
-            <tr>
-                <td>✅ 恐惧贪婪指数进入极度恐惧（反向信号）</td>
-                <td>❌ 放量下跌显示抛压</td>
-            </tr>
-        </table>
-        
-        <h3>投资策略建议</h3>
-        <ul>
-            <li><strong>已持有：</strong>继续持有，设置$580止损保护利润</li>
-            <li><strong>想买入：</strong>等$590-595再考虑，首次建仓10%</li>
-            <li><strong>定投：</strong>维持但降至原金额70%</li>
-        </ul>
+        <p>基于以上分析，当前市场情绪极度恐惧，VIX指数高企，技术面偏弱。建议保持谨慎。</p>
 
-        <h2>【8】风险提示</h2>
+        <h2>【8】投资策略</h2>
+        <div style="background: var(--bg-tertiary); padding: 1.5rem; border-radius: 12px; margin: 1rem 0;">
+            <p style="font-size:1.1rem; margin-bottom:0.5rem;"><strong>建议：Reduce (降低仓位)</strong></p>
+            <ul>
+                <li>当前市场情绪极度恐惧，建议降低股票仓位</li>
+                <li>保留现金，等待更好的入场时机</li>
+                <li>如果持有，可考虑部分止盈</li>
+                <li>不要盲目抄底，等市场稳定后再考虑加仓</li>
+            </ul>
+        </div>
+
+        <h2>【9】风险提示</h2>
         <ul>
-            <li>⚠️ <strong>数据声明：</strong>本报告所有数据均来自公开金融网站，分析仅作参考</li>
-            <li>⚠️ <strong>投资风险：</strong>AI分析不能替代个人投资决策</li>
-            <li>⚠️ <strong>波动风险：</strong>VIX飙升预示短期波动加大</li>
-            <li>⚠️ <strong>地缘风险：</strong>伊朗局势可能进一步恶化</li>
+            <li>⚠️ 本报告仅供参考，不构成投资建议</li>
+            <li>⚠️ 投资有风险，入市需谨慎</li>
+            <li>⚠️ AI分析仅作参考，不能替代投资决策</li>
+            <li>⚠️ 市场波动大，请控制好仓位</li>
         </ul>
 
         <div class="disclaimer">
-            <p><strong>⚠️ 免责声明：</strong>本报告仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。所有数据和判断仅代表个人观点，不代表任何机构立场。在做出任何投资决策之前，请咨询专业的金融顾问。</p>
-            <p style="margin-top: 0.5rem;"><strong>📊 数据来源：</strong>Yahoo Finance | TradingView | feargreedmeter.com | worldperatio.com | CBOE | Reuters | Bloomberg</p>
+            <p><strong>📊 数据来源：</strong></p>
+            <p>• <a href="https://feargreedmeter.com/" target="_blank">FearGreedMeter</a></p>
+            <p>• <a href="https://finance.yahoo.com/" target="_blank">Yahoo Finance</a></p>
+            <p>• <a href="https://www.tradingview.com/" target="_blank">TradingView</a></p>
+            <p>• <a href="https://www.cnbc.com/markets/" target="_blank">CNBC</a></p>
         </div>
-    </div></div></div></main>
+        </div></div></div></main>
     <footer class="footer"><div class="container"><p>© Allen Xu · All thoughts are mine.</p></div></footer>
-    <script src="../js/main.js"></script>
-    <script>
-    function toggleTheme() {
-        var html = document.documentElement;
-        var currentTheme = html.getAttribute("data-theme");
-        var newTheme = currentTheme === "dark" ? "light" : "dark";
-        html.setAttribute("data-theme", newTheme);
-        localStorage.setItem("theme", newTheme);
-    }
-    function openMobileMenu() {
-        document.getElementById("mobileOverlay").classList.add("active");
-        document.getElementById("mobileMenu").classList.add("active");
-    }
-    function closeMobileMenu() {
-        var btn = document.querySelector(".mobile-toggle-btn");
-        if (btn) btn.classList.remove("active");
-        document.getElementById("mobileOverlay").classList.remove("active");
-        document.getElementById("mobileMenu").classList.remove("active");
-    }
-    function toggleMobileMenu() {
-        var menu = document.getElementById("mobileMenu");
-        var overlay = document.getElementById("mobileOverlay");
-        var btn = document.querySelector(".mobile-toggle-btn");
-        if (menu.classList.contains("active")) {
-            closeMobileMenu();
-        } else {
-            openMobileMenu();
-            if (btn) btn.classList.add("active");
-        }
-    }
-    </script>
 </body>
 </html>
